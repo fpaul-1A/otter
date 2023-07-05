@@ -131,6 +131,11 @@
       ]
     },
     "test-int": {
+      "inputs": [
+        {"env": "RUNNER_OS"},
+        {"env": "ENFORCED_PACKAGE_MANAGER"},
+        "default"
+      ],
       "outputs": [
         "{projectRoot}/dist-test/it-report.xml"
       ]
