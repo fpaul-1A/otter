@@ -28,7 +28,8 @@ jobs:
             fs.writeFileSync(`${process.env.GITHUB_WORKSPACE}/logs.zip`, Buffer.from(download.data));
       - run: unzip logs.zip
       - name: extract version from logs
-        run: echo nextVersionTag=$(find *_version.txt | xargs grep -iPo '(?<=nextVersionTag variable has been set with ).*$') >> "$GITHUB_OUTPUT"
+        id: newVersion
+        run: echo nextVersionTag=$(find *_version.txt | xargs grep -hiPo '(?<=nextVersionTag variable has been set with ).*$') >> "$GITHUB_OUTPUT"
 
   publish-packages-pr:
     uses: ./.github/workflows/publish.yml
