@@ -36,7 +36,12 @@ runs:
           let fs = require('fs');
           fs.writeFileSync(`${process.env.GITHUB_WORKSPACE}/${{ inputs.artifactName }}.zip`, Buffer.from(download.data));
 
+    - run: ls -a
+      shell: bash
     - run: unzip -q -n ${{ inputs.artifactName }}.zip
+      shell: bash
+      
+    - run: ls -a
       shell: bash
     - run: rm -f ${{ inputs.artifactName }}.zip
       shell: bash
