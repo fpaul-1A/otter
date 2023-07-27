@@ -66,7 +66,7 @@ export async function createTestApp(inputOptions: Partial<CreateTestAppOptions>)
     appDirectory: 'test-app',
     cwd: process.cwd(),
     globalFolderPath: process.cwd(),
-    registry: 'http://localhost:4873',
+    registry: 'http://127.0.0.1:4873',
     blank: false,
     ...inputOptions
   };
@@ -135,7 +135,7 @@ export async function createTestApp(inputOptions: Partial<CreateTestAppOptions>)
     execSync('yarn config set nodeLinker pnp', execAppOptions);
     execSync(`yarn config set npmScopes.ama-sdk.npmRegistryServer ${options.registry}`, execAppOptions);
     execSync(`yarn config set npmScopes.o3r.npmRegistryServer ${options.registry}`, execAppOptions);
-    execSync('yarn config set unsafeHttpWhitelist localhost', execAppOptions);
+    execSync('yarn config set unsafeHttpWhitelist 127.0.0.1', execAppOptions);
   } else {
     // FIXME to be removed?
     execSync('npm config set legacy-peer-deps=true -L project', execAppOptions);

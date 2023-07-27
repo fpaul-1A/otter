@@ -6,7 +6,7 @@ import pidFromPort from 'pid-from-port';
 /**
  * Set up a local npm registry inside a docker image before the tests.
  * Publish all the packages of the Otter monorepo on it.
- * Can be accessed during the tests with url http://localhost:4873
+ * Can be accessed during the tests with url http://127.0.0.1:4873
  */
 export function setupLocalRegistry() {
   let shouldHandleVerdaccio = false;
