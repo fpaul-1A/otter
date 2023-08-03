@@ -46,7 +46,7 @@ jobs:
       - name: Test
         env:
           testCmd: ${{ inputs.affected && format('test:affected --base=remotes/origin/{0}', github.base_ref || github.ref_name) || 'test'}}
-          NODE_OPTIONS: ${{ runner.os == 'Windows' && '--max_old_space_size=4096' || '' }}
+          NODE_OPTIONS: ${{ runner.os == 'Windows' && '--max-old-space-size=4096' || '' }}
         run: yarn ${{ env.testCmd }} --output-style=stream
       - name: Publish tests reports
         if: always()
