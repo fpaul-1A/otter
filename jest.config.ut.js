@@ -10,7 +10,6 @@ globalThis.ngJest = {
  * @returns {import('ts-jest/dist/types').JestConfigWithTsJest}
  */
 module.exports.getJestConfig = (rootDir, isAngularSetup) => ({
-  preset: 'ts-jest',
   setupFilesAfterEnv: ['<rootDir>/testing/setup-jest.ts'],
   rootDir: '.',
   moduleNameMapper: getJestModuleNameMapper(rootDir),
@@ -28,15 +27,14 @@ module.exports.getJestConfig = (rootDir, isAngularSetup) => ({
   fakeTimers: {
     enableGlobally: true
   },
+  extensionsToTreatAsEsm: ['.ts'],
   transform: {
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    '^.+\\.tsx?$': [
-      'ts-jest',
-      {
-        tsconfig: '<rootDir>/tsconfig.spec.json',
-        stringifyContentPathRegex: '\\.html$'
+    '^.+\\.(t|j)sx?$': ['@swc/jest', {
+      module: {
+        type: 'es6'
       }
-    ]
+    }]
   },
   testEnvironmentOptions: {
     // workaround for the SDK Core

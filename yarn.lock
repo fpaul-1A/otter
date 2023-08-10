@@ -80,8 +80,9 @@ __metadata:
     "@o3r/schematics": "workspace:^"
     "@schematics/angular": ~16.1.6
     "@swc/cli": ^0.1.57
-    "@swc/core": ^1.3.66
+    "@swc/core": 1.3.75
     "@swc/helpers": ^0.5.0
+    "@swc/jest": 0.2.28
     "@types/jest": ~29.5.2
     "@types/node": ^18.0.0
     "@types/uuid": ^9.0.0
@@ -143,6 +144,8 @@ __metadata:
     "@o3r/eslint-plugin": "workspace:^"
     "@openapitools/openapi-generator-cli": ~2.7.0
     "@schematics/angular": ~16.1.6
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/jest": ~29.5.2
     "@types/minimist": ^1.2.2
     "@types/node": ^18.0.0
@@ -187,6 +190,8 @@ __metadata:
     "@o3r/dev-tools": "workspace:^"
     "@o3r/eslint-plugin": "workspace:^"
     "@schematics/angular": ~16.1.6
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/jest": ~29.5.2
     "@types/node": ^18.0.0
     "@types/yeoman-environment": ^2.10.7
@@ -244,6 +249,8 @@ __metadata:
     "@o3r/schematics": "workspace:^"
     "@openapitools/openapi-generator-cli": ~2.7.0
     "@schematics/angular": ~16.1.6
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/jest": ~29.5.2
     "@types/js-yaml": ^4.0.5
     "@types/minimatch": ^5.1.2
@@ -307,6 +314,8 @@ __metadata:
     "@nx/jest": ~16.6.0
     "@o3r/build-helpers": "workspace:^"
     "@o3r/eslint-plugin": "workspace:^"
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/glob": ^8.0.0
     "@types/jest": ~29.5.2
     "@types/js-yaml": ^4.0.5
@@ -362,6 +371,8 @@ __metadata:
     "@o3r/dev-tools": "workspace:^"
     "@o3r/eslint-plugin": "workspace:^"
     "@o3r/schematics": "workspace:^"
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/jest": ~29.5.2
     "@types/minimist": ^1.2.2
     "@types/node": ^18.0.0
@@ -422,6 +433,8 @@ __metadata:
     "@o3r/build-helpers": "workspace:^"
     "@o3r/dev-tools": "workspace:^"
     "@o3r/eslint-plugin": "workspace:^"
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/jest": ~29.5.2
     "@types/minimist": ^1.2.2
     "@types/node": ^18.0.0
@@ -461,6 +474,8 @@ __metadata:
     "@o3r/dev-tools": "workspace:^"
     "@o3r/eslint-plugin": "workspace:^"
     "@o3r/schematics": "workspace:^"
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/jest": ~29.5.2
     "@types/node": ^18.0.0
     "@typescript-eslint/eslint-plugin": ^5.59.9
@@ -4173,6 +4188,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@jest/create-cache-key-function@npm:^27.4.2":
+  version: 27.5.1
+  resolution: "@jest/create-cache-key-function@npm:27.5.1"
+  dependencies:
+    "@jest/types": ^27.5.1
+  checksum: a6c3a8c769aca6f66f5dc80f1c77e66980b4f213a6b2a15a92ba3595f032848a1261c06c9c798dcf2b672b1ffbefad5085af89d130548741c85ddbe0cf4284e7
+  languageName: node
+  linkType: hard
+
 "@jest/environment@npm:^29.6.2":
   version: 29.6.2
   resolution: "@jest/environment@npm:29.6.2"
@@ -4331,6 +4355,19 @@ __metadata:
     slash: ^3.0.0
     write-file-atomic: ^4.0.2
   checksum: ffb8c3c344cd48bedadec295d9c436737eccc39c1f0868aa9753b76397b33b2e5b121058af6f287ba6f2036181137e37df1212334bfa9d9a712986a4518cdc18
+  languageName: node
+  linkType: hard
+
+"@jest/types@npm:^27.5.1":
+  version: 27.5.1
+  resolution: "@jest/types@npm:27.5.1"
+  dependencies:
+    "@types/istanbul-lib-coverage": ^2.0.0
+    "@types/istanbul-reports": ^3.0.0
+    "@types/node": "*"
+    "@types/yargs": ^16.0.0
+    chalk: ^4.0.0
+  checksum: d1f43cc946d87543ddd79d49547aab2399481d34025d5c5f2025d3d99c573e1d9832fa83cef25e9d9b07a8583500229d15bbb07b8e233d127d911d133e2f14b1
   languageName: node
   linkType: hard
 
@@ -6199,6 +6236,8 @@ __metadata:
     "@o3r/build-helpers": "workspace:^"
     "@o3r/dev-tools": "workspace:^"
     "@o3r/eslint-plugin": "workspace:^"
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/jest": ~29.5.2
     "@types/js-yaml": ^4.0.5
     "@types/node": ^18.0.0
@@ -6232,6 +6271,8 @@ __metadata:
     "@o3r/build-helpers": "workspace:^"
     "@o3r/dev-tools": "workspace:^"
     "@o3r/eslint-plugin": "workspace:^"
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/jest": ~29.5.2
     "@types/node": ^18.0.0
     "@types/tar": ~6.1.1
@@ -6268,6 +6309,8 @@ __metadata:
     "@o3r/build-helpers": "workspace:^"
     "@o3r/dev-tools": "workspace:^"
     "@o3r/eslint-plugin": "workspace:^"
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/jest": ~29.5.2
     "@types/js-yaml": ^4.0.5
     "@types/node": ^18.0.0
@@ -6305,6 +6348,8 @@ __metadata:
     "@o3r/build-helpers": "workspace:^"
     "@o3r/dev-tools": "workspace:^"
     "@o3r/eslint-plugin": "workspace:^"
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/jest": ~29.5.2
     "@types/js-yaml": ^4.0.5
     "@types/node": ^18.0.0
@@ -6356,6 +6401,8 @@ __metadata:
     "@o3r/dev-tools": "workspace:^"
     "@o3r/eslint-plugin": "workspace:^"
     "@schematics/angular": ~16.1.6
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/jasmine": ~4.3.5
     "@types/jest": ~29.5.2
     "@types/node": ^18.0.0
@@ -6432,6 +6479,8 @@ __metadata:
     "@o3r/eslint-plugin": "workspace:^"
     "@o3r/schematics": "workspace:^"
     "@schematics/angular": ~16.1.6
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/jest": ~29.5.2
     "@typescript-eslint/eslint-plugin": ^5.59.9
     "@typescript-eslint/parser": ^5.59.9
@@ -6500,6 +6549,8 @@ __metadata:
     "@o3r/schematics": "workspace:^"
     "@o3r/testing": "workspace:^"
     "@schematics/angular": ~16.1.6
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/jest": ~29.5.2
     "@typescript-eslint/eslint-plugin": ^5.59.9
     "@typescript-eslint/parser": ^5.59.9
@@ -6546,6 +6597,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@o3r/build-helpers@workspace:tools/@o3r/build-helpers"
   dependencies:
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/node": ^18.0.0
     globby: ^13.1.2
     minimist: ^1.2.6
@@ -6604,6 +6657,8 @@ __metadata:
     "@o3r/localization": "workspace:^"
     "@o3r/rules-engine": "workspace:^"
     "@popperjs/core": ^2.11.5
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/chrome": ^0.0.243
     "@types/jest": ~29.5.2
     "@typescript-eslint/eslint-plugin": ^5.59.9
@@ -6673,6 +6728,8 @@ __metadata:
     "@o3r/schematics": "workspace:^"
     "@o3r/testing": "workspace:^"
     "@schematics/angular": ~16.1.6
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/jest": ~29.5.2
     "@types/node": ^18.0.0
     "@typescript-eslint/eslint-plugin": ^5.59.9
@@ -6768,6 +6825,8 @@ __metadata:
     "@o3r/schematics": "workspace:^"
     "@o3r/testing": "workspace:^"
     "@schematics/angular": ~16.1.6
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/jasmine": ~4.3.5
     "@types/jest": ~29.5.2
     "@types/node": ^18.0.0
@@ -6858,6 +6917,8 @@ __metadata:
     "@o3r/eslint-plugin": "workspace:^"
     "@o3r/schematics": "workspace:^"
     "@schematics/angular": ~16.1.6
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/jest": ~29.5.2
     "@types/minimist": ^1.2.2
     "@types/node": ^18.0.0
@@ -6946,6 +7007,8 @@ __metadata:
     "@o3r/dev-tools": "workspace:^"
     "@o3r/eslint-config-otter": "workspace:^"
     "@o3r/eslint-plugin": "workspace:^"
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/jest": ~29.5.2
     "@types/minimist": ^1.2.2
     "@types/node": ^18.0.0
@@ -6985,6 +7048,8 @@ __metadata:
     "@nx/jest": ~16.6.0
     "@o3r/build-helpers": "workspace:^"
     "@o3r/eslint-plugin": "workspace:^"
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/fs-extra": ^11.0.0
     "@types/glob": ^8.0.0
     "@types/jest": ~29.5.2
@@ -7069,6 +7134,8 @@ __metadata:
     "@o3r/eslint-config-otter": "workspace:^"
     "@o3r/eslint-plugin": "workspace:^"
     "@o3r/schematics": "workspace:^"
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/jasmine": ~4.3.5
     "@types/jest": ~29.5.2
     "@types/node": ^18.0.0
@@ -7130,6 +7197,8 @@ __metadata:
     "@o3r/eslint-plugin": "workspace:^"
     "@o3r/schematics": "workspace:^"
     "@schematics/angular": ~16.1.6
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/node": ^18.0.0
     "@typescript-eslint/eslint-plugin": ^5.59.9
     "@typescript-eslint/parser": ^5.59.9
@@ -7202,6 +7271,8 @@ __metadata:
     "@nx/jest": ~16.6.0
     "@o3r/build-helpers": "workspace:^"
     "@o3r/eslint-plugin": "workspace:^"
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/jest": ~29.5.2
     "@types/node": ^18.0.0
     "@typescript-eslint/eslint-plugin": ^5.59.9
@@ -7260,6 +7331,8 @@ __metadata:
     "@o3r/eslint-config-otter": "workspace:^"
     "@o3r/eslint-plugin": "workspace:^"
     "@o3r/schematics": "workspace:^"
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/jest": ~29.5.2
     "@types/node": ^18.0.0
     "@typescript-eslint/eslint-plugin": ^5.59.9
@@ -7326,6 +7399,8 @@ __metadata:
     "@o3r/eslint-config-otter": "workspace:^"
     "@o3r/eslint-plugin": "workspace:^"
     "@o3r/schematics": "workspace:^"
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/jest": ~29.5.2
     "@types/node": ^18.0.0
     "@typescript-eslint/eslint-plugin": ^5.59.9
@@ -7401,7 +7476,8 @@ __metadata:
     "@o3r/eslint-plugin": "workspace:^"
     "@schematics/angular": ~16.1.6
     "@swc-node/register": ^1.6.6
-    "@swc/core": ^1.3.66
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/jest": ~29.5.2
     "@types/node": ^18.0.0
     "@types/semver": ^7.3.13
@@ -7477,6 +7553,8 @@ __metadata:
     "@o3r/dev-tools": "workspace:^"
     "@o3r/eslint-config-otter": "workspace:^"
     "@o3r/eslint-plugin": "workspace:^"
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/ejs": ^3.1.2
     "@types/jest": ~29.5.2
     "@types/node": ^18.0.0
@@ -7543,6 +7621,8 @@ __metadata:
     "@o3r/logger": "workspace:^"
     "@o3r/schematics": "workspace:^"
     "@schematics/angular": ~16.1.6
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/jest": ~29.5.2
     "@types/node": ^18.0.0
     "@typescript-eslint/eslint-plugin": ^5.59.9
@@ -7637,6 +7717,8 @@ __metadata:
     "@o3r/eslint-config-otter": "workspace:^"
     "@o3r/eslint-plugin": "workspace:^"
     "@o3r/schematics": "workspace:^"
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/jest": ~29.5.2
     "@types/node": ^18.0.0
     "@typescript-eslint/eslint-plugin": ^5.59.9
@@ -7720,6 +7802,8 @@ __metadata:
     "@o3r/schematics": "workspace:^"
     "@o3r/store-sync": "workspace:^"
     "@schematics/angular": ~16.1.6
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/jest": ~29.5.2
     "@types/node": ^18.0.0
     "@types/node-fetch": ^2.6.2
@@ -7805,6 +7889,8 @@ __metadata:
     "@o3r/eslint-plugin": "workspace:^"
     "@o3r/routing": "workspace:^"
     "@o3r/schematics": "workspace:^"
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/jasmine": ~4.3.5
     "@types/jest": ~29.5.2
     "@types/node": ^18.0.0
@@ -7888,6 +7974,8 @@ __metadata:
     "@o3r/schematics": "workspace:^"
     "@o3r/testing": "workspace:^"
     "@schematics/angular": ~16.1.6
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/jasmine": ~4.3.5
     "@types/jest": ~29.5.2
     "@types/node": ^18.0.0
@@ -7993,6 +8081,8 @@ __metadata:
     "@o3r/dev-tools": "workspace:^"
     "@o3r/eslint-plugin": "workspace:^"
     "@schematics/angular": ~16.1.6
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/jest": ~29.5.2
     "@types/node": ^18.0.0
     "@types/semver": ^7.3.13
@@ -8060,6 +8150,8 @@ __metadata:
     "@o3r/eslint-plugin": "workspace:^"
     "@o3r/logger": "workspace:^"
     "@o3r/schematics": "workspace:^"
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/jest": ~29.5.2
     "@types/node": ^18.0.0
     "@typescript-eslint/eslint-plugin": ^5.59.9
@@ -8137,6 +8229,8 @@ __metadata:
     "@storybook/angular": ^7.0.20
     "@storybook/api": ^7.0.20
     "@storybook/components": ^7.0.20
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/color": ^3.0.1
     "@types/jest": ~29.5.2
     "@types/node": ^18.0.0
@@ -8202,6 +8296,8 @@ __metadata:
     "@o3r/build-helpers": "workspace:^"
     "@o3r/eslint-config-otter": "workspace:^"
     "@o3r/eslint-plugin": "workspace:^"
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/jest": ~29.5.2
     "@types/node": ^18.0.0
     "@typescript-eslint/eslint-plugin": ^5.59.9
@@ -8264,6 +8360,8 @@ __metadata:
     "@o3r/schematics": "workspace:^"
     "@o3r/styling": "workspace:^"
     "@schematics/angular": ~16.1.6
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/jest": ~29.5.2
     "@types/node": ^18.0.0
     "@typescript-eslint/eslint-plugin": ^5.59.9
@@ -8341,6 +8439,8 @@ __metadata:
     "@o3r/localization": "workspace:^"
     "@o3r/schematics": "workspace:^"
     "@schematics/angular": ~16.1.6
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/jest": ~29.5.2
     "@types/node": ^18.0.0
     "@types/pixelmatch": ^5.2.3
@@ -8439,6 +8539,8 @@ __metadata:
     "@o3r/eslint-config-otter": "workspace:^"
     "@o3r/eslint-plugin": "workspace:^"
     "@o3r/schematics": "workspace:^"
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/jest": ~29.5.2
     "@types/node": ^18.0.0
     "@types/uuid": ^9.0.0
@@ -9818,90 +9920,90 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@swc/core-darwin-arm64@npm:1.3.66":
-  version: 1.3.66
-  resolution: "@swc/core-darwin-arm64@npm:1.3.66"
+"@swc/core-darwin-arm64@npm:1.3.75":
+  version: 1.3.75
+  resolution: "@swc/core-darwin-arm64@npm:1.3.75"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@swc/core-darwin-x64@npm:1.3.66":
-  version: 1.3.66
-  resolution: "@swc/core-darwin-x64@npm:1.3.66"
+"@swc/core-darwin-x64@npm:1.3.75":
+  version: 1.3.75
+  resolution: "@swc/core-darwin-x64@npm:1.3.75"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@swc/core-linux-arm-gnueabihf@npm:1.3.66":
-  version: 1.3.66
-  resolution: "@swc/core-linux-arm-gnueabihf@npm:1.3.66"
+"@swc/core-linux-arm-gnueabihf@npm:1.3.75":
+  version: 1.3.75
+  resolution: "@swc/core-linux-arm-gnueabihf@npm:1.3.75"
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
-"@swc/core-linux-arm64-gnu@npm:1.3.66":
-  version: 1.3.66
-  resolution: "@swc/core-linux-arm64-gnu@npm:1.3.66"
+"@swc/core-linux-arm64-gnu@npm:1.3.75":
+  version: 1.3.75
+  resolution: "@swc/core-linux-arm64-gnu@npm:1.3.75"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@swc/core-linux-arm64-musl@npm:1.3.66":
-  version: 1.3.66
-  resolution: "@swc/core-linux-arm64-musl@npm:1.3.66"
+"@swc/core-linux-arm64-musl@npm:1.3.75":
+  version: 1.3.75
+  resolution: "@swc/core-linux-arm64-musl@npm:1.3.75"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@swc/core-linux-x64-gnu@npm:1.3.66":
-  version: 1.3.66
-  resolution: "@swc/core-linux-x64-gnu@npm:1.3.66"
+"@swc/core-linux-x64-gnu@npm:1.3.75":
+  version: 1.3.75
+  resolution: "@swc/core-linux-x64-gnu@npm:1.3.75"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@swc/core-linux-x64-musl@npm:1.3.66":
-  version: 1.3.66
-  resolution: "@swc/core-linux-x64-musl@npm:1.3.66"
+"@swc/core-linux-x64-musl@npm:1.3.75":
+  version: 1.3.75
+  resolution: "@swc/core-linux-x64-musl@npm:1.3.75"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@swc/core-win32-arm64-msvc@npm:1.3.66":
-  version: 1.3.66
-  resolution: "@swc/core-win32-arm64-msvc@npm:1.3.66"
+"@swc/core-win32-arm64-msvc@npm:1.3.75":
+  version: 1.3.75
+  resolution: "@swc/core-win32-arm64-msvc@npm:1.3.75"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@swc/core-win32-ia32-msvc@npm:1.3.66":
-  version: 1.3.66
-  resolution: "@swc/core-win32-ia32-msvc@npm:1.3.66"
+"@swc/core-win32-ia32-msvc@npm:1.3.75":
+  version: 1.3.75
+  resolution: "@swc/core-win32-ia32-msvc@npm:1.3.75"
   conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
 
-"@swc/core-win32-x64-msvc@npm:1.3.66":
-  version: 1.3.66
-  resolution: "@swc/core-win32-x64-msvc@npm:1.3.66"
+"@swc/core-win32-x64-msvc@npm:1.3.75":
+  version: 1.3.75
+  resolution: "@swc/core-win32-x64-msvc@npm:1.3.75"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"@swc/core@npm:^1.3.66":
-  version: 1.3.66
-  resolution: "@swc/core@npm:1.3.66"
+"@swc/core@npm:1.3.75":
+  version: 1.3.75
+  resolution: "@swc/core@npm:1.3.75"
   dependencies:
-    "@swc/core-darwin-arm64": 1.3.66
-    "@swc/core-darwin-x64": 1.3.66
-    "@swc/core-linux-arm-gnueabihf": 1.3.66
-    "@swc/core-linux-arm64-gnu": 1.3.66
-    "@swc/core-linux-arm64-musl": 1.3.66
-    "@swc/core-linux-x64-gnu": 1.3.66
-    "@swc/core-linux-x64-musl": 1.3.66
-    "@swc/core-win32-arm64-msvc": 1.3.66
-    "@swc/core-win32-ia32-msvc": 1.3.66
-    "@swc/core-win32-x64-msvc": 1.3.66
+    "@swc/core-darwin-arm64": 1.3.75
+    "@swc/core-darwin-x64": 1.3.75
+    "@swc/core-linux-arm-gnueabihf": 1.3.75
+    "@swc/core-linux-arm64-gnu": 1.3.75
+    "@swc/core-linux-arm64-musl": 1.3.75
+    "@swc/core-linux-x64-gnu": 1.3.75
+    "@swc/core-linux-x64-musl": 1.3.75
+    "@swc/core-win32-arm64-msvc": 1.3.75
+    "@swc/core-win32-ia32-msvc": 1.3.75
+    "@swc/core-win32-x64-msvc": 1.3.75
   peerDependencies:
     "@swc/helpers": ^0.5.0
   dependenciesMeta:
@@ -9928,7 +10030,7 @@ __metadata:
   peerDependenciesMeta:
     "@swc/helpers":
       optional: true
-  checksum: e6029c648ba47c522bed51a9f2fee606f82de1f9233e2e89197e43b0a4867054174ca05e825e688cdc4de332221c0da2e12ba7ba875549e8b5432aa70fe19263
+  checksum: 2447b5d627adc178a460d0e1bdeb55e57d503fd5e4085a5d9b1aa9d311bd38b48b78de55f9541a3a79708b3da5e0080f40eb342b6359c76d82fde66e4a6cf7e7
   languageName: node
   linkType: hard
 
@@ -9938,6 +10040,18 @@ __metadata:
   dependencies:
     tslib: ^2.4.0
   checksum: 61c9c7dddb707deb58b85328cfe9d211887145f1311ae6a6e6c0fa9f781fb29916a8669a7d479e46e26a32a89d6ef4f293a22dee4925e009c84051e9dd10e8b7
+  languageName: node
+  linkType: hard
+
+"@swc/jest@npm:0.2.28":
+  version: 0.2.28
+  resolution: "@swc/jest@npm:0.2.28"
+  dependencies:
+    "@jest/create-cache-key-function": ^27.4.2
+    jsonc-parser: ^3.2.0
+  peerDependencies:
+    "@swc/core": "*"
+  checksum: 9f9fe7e091077079511e602afe0d0f270c5a274197fe6d55e7f8a8a0f44aadc70f726d8c2571b0eb2af8030d2bba601786adff2d811d6c01f27395c94c746edd
   languageName: node
   linkType: hard
 
@@ -10974,6 +11088,15 @@ __metadata:
   version: 21.0.0
   resolution: "@types/yargs-parser@npm:21.0.0"
   checksum: b2f4c8d12ac18a567440379909127cf2cec393daffb73f246d0a25df36ea983b93b7e9e824251f959e9f928cbc7c1aab6728d0a0ff15d6145f66cec2be67d9a2
+  languageName: node
+  linkType: hard
+
+"@types/yargs@npm:^16.0.0":
+  version: 16.0.5
+  resolution: "@types/yargs@npm:16.0.5"
+  dependencies:
+    "@types/yargs-parser": "*"
+  checksum: 22697f7cc8aa32dcc10981a87f035e183303a58351c537c81fb450270d5c494b1d918186210e445b0eb2e4a8b34a8bda2a595f346bdb1c9ed2b63d193cb00430
   languageName: node
   linkType: hard
 
@@ -12490,6 +12613,8 @@ __metadata:
     "@angular-eslint/eslint-plugin": ~16.1.0
     "@o3r/eslint-config-otter": "workspace:~"
     "@o3r/eslint-plugin": "workspace:~"
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/node": ^18.0.0
     "@typescript-eslint/eslint-plugin": ^5.59.9
     "@typescript-eslint/parser": ^5.59.9
@@ -13487,6 +13612,8 @@ __metadata:
     "@o3r/dev-tools": "workspace:^"
     "@o3r/eslint-config-otter": "workspace:~"
     "@o3r/eslint-plugin": "workspace:~"
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/jest": ~29.5.2
     "@types/node": ^18.0.0
     "@typescript-eslint/eslint-plugin": ^5.59.9
@@ -18008,6 +18135,8 @@ __metadata:
     "@angular-eslint/eslint-plugin": ~16.1.0
     "@o3r/eslint-config-otter": "workspace:~"
     "@o3r/eslint-plugin": "workspace:~"
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/node": ^18.0.0
     "@types/semver": ^7.3.13
     "@typescript-eslint/eslint-plugin": ^5.59.9
@@ -22590,6 +22719,8 @@ __metadata:
     "@o3r/dev-tools": "workspace:^"
     "@o3r/eslint-config-otter": "workspace:~"
     "@o3r/eslint-plugin": "workspace:~"
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/jest": ~29.5.2
     "@types/node": ^18.0.0
     "@types/semver": ^7.3.13
@@ -23707,6 +23838,8 @@ __metadata:
     "@o3r/dev-tools": "workspace:^"
     "@o3r/eslint-plugin": "workspace:^"
     "@o3r/schematics": "workspace:^"
+    "@swc/core": 1.3.75
+    "@swc/jest": 0.2.28
     "@types/glob": ^8.0.0
     "@types/jest": ~29.5.2
     "@types/node": ^18.0.0

@@ -28,14 +28,14 @@ describe('Logger service', () => {
     });
 
     it('should report warning', () => {
-      const spy = jest.spyOn(consoleLogger, 'warn');
+      const spy = jest.spyOn(consoleLogger, 'warn').mockImplementation();
       service.warn('warning', 'test');
 
       expect(spy).toHaveBeenCalledWith('warning', 'test');
     });
 
     it('should report error', () => {
-      const spy = jest.spyOn(consoleLogger, 'error');
+      const spy = jest.spyOn(consoleLogger, 'error').mockImplementation();
       service.error('error', 'test');
 
       expect(spy).toHaveBeenCalledWith('error', 'test');

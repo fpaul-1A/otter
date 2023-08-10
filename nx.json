@@ -103,6 +103,7 @@
     ],
     "specs": [
       "default",
+      "{workspaceRoot}/jest.config.*",
       "{projectRoot}/jest.config.*",
       "{projectRoot}/testing/**/*",
       "{projectRoot}/mocks/**/*"

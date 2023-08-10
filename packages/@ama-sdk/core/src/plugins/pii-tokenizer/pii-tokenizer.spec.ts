@@ -1,3 +1,10 @@
+jest.mock('../../utils/json-token', () => {
+  return {
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    __esModule: true,
+    ...jest.requireActual('../../utils/json-token')
+  };
+});
 import * as jsonToken from '../../utils/json-token';
 import { DeepLinkOptions, RequestMetadata, RequestOptions, TokenizedOptions } from '../core/request-plugin';
 import { PiiTokenizerRequest } from './pii-tokenizer.request';
@@ -28,7 +35,7 @@ describe('Tokenizer Request Plugin', () => {
       }
     };
 
-    jest.spyOn(console, 'error');
+    jest.spyOn(console, 'error').mockImplementation();
   });
 
   afterEach(() => {
