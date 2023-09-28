@@ -104,7 +104,11 @@
           "namedChunks": true
         }
       },
-      "defaultConfiguration": "production"
+      "defaultConfiguration": "production",
+      "dependsOn": [
+        "^build",
+        "generate-translations"
+      ]
     },
     "serve": {
       "executor": "@o3r/core:multi-watcher",
@@ -215,6 +219,7 @@
       },
       "dependsOn": [
         "i18n",
+        "extract-translations",
         "^build-builders"
       ]
     },
