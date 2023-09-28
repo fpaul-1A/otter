@@ -215,6 +215,7 @@
       },
       "dependsOn": [
         "i18n",
+        "extract-translations",
         "^build-builders"
       ]
     },
