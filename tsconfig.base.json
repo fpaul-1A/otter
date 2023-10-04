@@ -41,6 +41,9 @@
       "@ama-sdk/schematics": [
         "packages/@ama-sdk/schematics"
       ],
+      "@ama-sdk/showcase": [
+        "packages/@ama-sdk/showcase"
+      ],
       "@ama-sdk/swagger-builder": [
         "packages/@ama-sdk/swagger-builder"
       ],
