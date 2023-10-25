@@ -158,6 +158,7 @@
     "@commitlint/cli": "^17.0.0",
     "@commitlint/config-conventional": "^17.0.0",
     "@compodoc/compodoc": "^1.1.19",
+    "@design-factory/design-factory": "^15.2.2",
     "@nx/angular": "~16.10.0",
     "@nx/eslint-plugin": "~16.10.0",
     "@nx/jest": "~16.10.0",
@@ -178,7 +179,11 @@
     "@typescript-eslint/parser": "^5.60.1",
     "@typescript-eslint/types": "^5.60.1",
     "@yarnpkg/sdks": "^2.7.0",
+    "ag-grid-angular": "~29.3.5",
+    "ag-grid-community": "~29.3.5",
     "babel-loader": "^9.0.0",
+    "bootstrap": "5.2.0",
+    "bootstrap-icons": "^1.10.5",
     "browserslist": "^4.21.4",
     "concurrently": "^8.0.0",
     "cpy-cli": "^4.2.0",
@@ -234,5 +239,22 @@
     "tools/@*/*",
     "apps/*"
   ],
-  "packageManager": "yarn@3.6.4"
+  "packageManager": "yarn@3.6.4",
+  "dependenciesMeta": {
+    "@design-factory/design-factory": {
+      "unplugged": true
+    },
+    "ag-grid-angular": {
+      "unplugged": true
+    },
+    "ag-grid-community": {
+      "unplugged": true
+    },
+    "bootstrap": {
+      "unplugged": true
+    },
+    "bootstrap-icons": {
+      "unplugged": true
+    }
+  }
 }

@@ -3511,9 +3511,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@design-factory/design-factory@npm:^15.2.1":
-  version: 15.2.1
-  resolution: "@design-factory/design-factory@npm:15.2.1"
+"@design-factory/design-factory@npm:^15.2.2":
+  version: 15.2.2
+  resolution: "@design-factory/design-factory@npm:15.2.2"
   dependencies:
     tslib: ^2.0.0
   peerDependencies:
@@ -3525,7 +3525,7 @@ __metadata:
     ag-grid-angular: ~29.3.5
     ag-grid-community: ~29.3.5
     bootstrap: 5.2.0
-  checksum: 920583bd20b8ccd1929c9a259db13b6b7efcf401b7b10d9ae349a0a61de08ec44c74f2ead1d3eba7e4932607cdd4b1a207170a682e59c4f9c36b82985f1a4507
+  checksum: 8e781e80207484372d8f51b28da12f28339aded627dc81eedbacfd80ececb0e801ca30b16453b7e8c4e8e61b04de88687ae47e60da13a412c3674b060afea9f3
   languageName: node
   linkType: hard
 
@@ -6914,6 +6914,7 @@ __metadata:
   peerDependencies:
     typescript: ~5.1.6
   bin:
+    add-yarn-unplugged-to-sass-path: ./scripts/add-yarn-unplugged-to-sass-path.mjs
     cp-assets: ./scripts/cp-assets.mjs
     cp-build: ./scripts/cp-build.mjs
     cp-package-json: ./scripts/cp-package-json.mjs
@@ -7260,6 +7261,7 @@ __metadata:
     rxjs: ^7.8.1
     semver: ^7.5.2
     ts-jest: ~29.1.1
+    ts-node: ~10.9.1
     tslib: ^2.5.3
     type-fest: ^3.12.0
     typescript: ~5.1.6
@@ -7791,6 +7793,7 @@ __metadata:
     "@commitlint/cli": ^17.0.0
     "@commitlint/config-conventional": ^17.0.0
     "@compodoc/compodoc": ^1.1.19
+    "@design-factory/design-factory": ^15.2.2
     "@nx/angular": ~16.10.0
     "@nx/eslint-plugin": ~16.10.0
     "@nx/jest": ~16.10.0
@@ -7811,7 +7814,11 @@ __metadata:
     "@typescript-eslint/parser": ^5.60.1
     "@typescript-eslint/types": ^5.60.1
     "@yarnpkg/sdks": ^2.7.0
+    ag-grid-angular: ~29.3.5
+    ag-grid-community: ~29.3.5
     babel-loader: ^9.0.0
+    bootstrap: 5.2.0
+    bootstrap-icons: ^1.10.5
     browserslist: ^4.21.4
     concurrently: ^8.0.0
     cpy-cli: ^4.2.0
@@ -7856,6 +7863,17 @@ __metadata:
     webpack: ~5.89.0
     winston: ^3.8.2
     zone.js: ~0.13.1
+  dependenciesMeta:
+    "@design-factory/design-factory":
+      unplugged: true
+    ag-grid-angular:
+      unplugged: true
+    ag-grid-community:
+      unplugged: true
+    bootstrap:
+      unplugged: true
+    bootstrap-icons:
+      unplugged: true
   languageName: unknown
   linkType: soft
 
@@ -8491,7 +8509,7 @@ __metadata:
     "@angular/platform-browser": ~16.2.0
     "@angular/platform-browser-dynamic": ~16.2.0
     "@angular/router": ~16.2.0
-    "@design-factory/design-factory": ^15.2.1
+    "@design-factory/design-factory": ^15.2.2
     "@formatjs/intl-numberformat": ~8.8.0
     "@ng-bootstrap/ng-bootstrap": ^15.1.1
     "@ng-select/ng-select": ~11.0.0
