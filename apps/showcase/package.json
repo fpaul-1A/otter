@@ -17,7 +17,8 @@
     "test:playwright": "playwright test --config=e2e-playwright/playwright-config.ts",
     "test:playwright:sanity": "playwright test --config=e2e-playwright/playwright-config.sanity.ts",
     "postbuild:patch": "yarn patch:package",
-    "patch:package": "cpy 'package.json' 'dist' && patch-package-json-main"
+    "patch:package": "cpy 'package.json' 'dist' && patch-package-json-main",
+    "set-sass-path": "yarn add-yarn-unplugged-to-sass-path"
   },
   "dependencies": {
     "@ama-sdk/core": "workspace:^",
@@ -80,6 +81,7 @@
     "@ng-bootstrap/ng-bootstrap": "^15.1.1",
     "@ng-select/ng-select": "~11.0.0",
     "@nx/eslint-plugin": "~16.10.0",
+    "@o3r/build-helpers": "workspace:^",
     "@o3r/dev-tools": "workspace:^",
     "@o3r/eslint-config-otter": "workspace:^",
     "@o3r/eslint-plugin": "workspace:^",
