@@ -30,6 +30,7 @@
         "script": "postbuild:patch"
       },
       "dependsOn": [
+        "set-sass-path",
         "extract-translations",
         "extract-components",
         "compile",
@@ -104,7 +105,8 @@
           "namedChunks": true
         }
       },
-      "defaultConfiguration": "production"
+      "defaultConfiguration": "production",
+      "dependsOn": ["set-sass-path"]
     },
     "serve": {
       "executor": "@o3r/core:multi-watcher",
@@ -113,7 +115,8 @@
           "showcase:generate-translations:development",
           "showcase:serve-app"
         ]
-      }
+      },
+      "dependsOn": ["set-sass-path"]
     },
     "serve-app": {
       "executor": "@angular-devkit/build-angular:dev-server",
@@ -125,7 +128,8 @@
           "browserTarget": "showcase:compile:development"
         }
       },
-      "defaultConfiguration": "development"
+      "defaultConfiguration": "development",
+      "dependsOn": ["set-sass-path"]
     },
     "extract-components": {
       "executor": "@o3r/components:extractor",
@@ -172,7 +176,10 @@
         "outputFactsDirectory": "apps/showcase",
         "outputOperatorsDirectory": "apps/showcase"
       },
-      "dependsOn": ["^build", "^build-builders"]
+      "dependsOn": [
+        "^build",
+        "^build-builders"
+      ]
     },
     "test": {
       "executor": "@nx/jest:jest",
@@ -267,7 +274,15 @@
       "dependsOn": [
         "^build-builders"
       ]
+    },
+    "set-sass-path": {
+      "executor": "nx:run-script",
+      "options": {
+        "script": "set-sass-path"
+      }
     }
   },
-  "tags": ["showcase"]
+  "tags": [
+    "showcase"
+  ]
 }

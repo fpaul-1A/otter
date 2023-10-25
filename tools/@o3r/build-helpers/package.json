@@ -13,6 +13,7 @@
     "scripts/*.mjs"
   ],
   "bin": {
+    "add-yarn-unplugged-to-sass-path": "./scripts/add-yarn-unplugged-to-sass-path.mjs",
     "cp-assets": "./scripts/cp-assets.mjs",
     "cp-build": "./scripts/cp-build.mjs",
     "cp-package-json": "./scripts/cp-package-json.mjs",

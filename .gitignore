@@ -84,3 +84,7 @@ coverage
 
 # OS
 *.DS_Store
+
+# Nx
+.local.env
+.env.local
