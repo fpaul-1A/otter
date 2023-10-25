@@ -234,5 +234,22 @@
     "tools/@*/*",
     "apps/*"
   ],
-  "packageManager": "yarn@3.6.4"
+  "packageManager": "yarn@3.6.4",
+  "dependenciesMeta": {
+    "@design-factory/design-factory": {
+      "unplugged": true
+    },
+    "ag-grid-angular": {
+      "unplugged": true
+    },
+    "ag-grid-community": {
+      "unplugged": true
+    },
+    "bootstrap": {
+      "unplugged": true
+    },
+    "bootstrap-icons": {
+      "unplugged": true
+    }
+  }
 }
