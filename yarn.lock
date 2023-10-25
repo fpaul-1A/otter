@@ -3511,6 +3511,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@design-factory/design-factory@npm:^15.2.1":
+  version: 15.2.1
+  resolution: "@design-factory/design-factory@npm:15.2.1"
+  dependencies:
+    tslib: ^2.0.0
+  peerDependencies:
+    "@angular/common": ^16.0.0
+    "@angular/core": ^16.0.0
+    "@angular/localize": ^16.0.0
+    "@ng-bootstrap/ng-bootstrap": ~15.1.0
+    "@ng-select/ng-select": ~11.0.0
+    ag-grid-angular: ~29.3.5
+    ag-grid-community: ~29.3.5
+    bootstrap: 5.2.0
+  checksum: 920583bd20b8ccd1929c9a259db13b6b7efcf401b7b10d9ae349a0a61de08ec44c74f2ead1d3eba7e4932607cdd4b1a207170a682e59c4f9c36b82985f1a4507
+  languageName: node
+  linkType: hard
+
 "@discoveryjs/json-ext@npm:0.5.7, @discoveryjs/json-ext@npm:^0.5.0, @discoveryjs/json-ext@npm:^0.5.3":
   version: 0.5.7
   resolution: "@discoveryjs/json-ext@npm:0.5.7"
@@ -5666,6 +5684,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ng-select/ng-select@npm:~11.0.0":
+  version: 11.0.0
+  resolution: "@ng-select/ng-select@npm:11.0.0"
+  dependencies:
+    tslib: ^2.3.1
+  peerDependencies:
+    "@angular/common": ^16.0.0
+    "@angular/core": ^16.0.0
+    "@angular/forms": ^16.0.0
+  checksum: 08f2b4b5bf0c043d39ca0c6b96f59aeea342d047b916d630517dbd6b63db35e5c2e0ca64d45c8570f730585f62866a640fff44be3d57815b7bb1dd0bd5ce1cba
+  languageName: node
+  linkType: hard
+
 "@ngrx/effects@npm:~16.3.0":
   version: 16.3.0
   resolution: "@ngrx/effects@npm:16.3.0"
@@ -6940,7 +6971,7 @@ __metadata:
     "@typescript-eslint/parser": ^5.60.1
     "@typescript-eslint/types": ^5.60.1
     archiver: ^5.3.1
-    bootstrap: ^5.3.1
+    bootstrap: 5.2.0
     bootstrap-icons: ^1.10.5
     chokidar: ^3.5.2
     chrome-webstore-upload: ^1.0.0
@@ -8460,8 +8491,10 @@ __metadata:
     "@angular/platform-browser": ~16.2.0
     "@angular/platform-browser-dynamic": ~16.2.0
     "@angular/router": ~16.2.0
+    "@design-factory/design-factory": ^15.2.1
     "@formatjs/intl-numberformat": ~8.8.0
     "@ng-bootstrap/ng-bootstrap": ^15.1.1
+    "@ng-select/ng-select": ~11.0.0
     "@ngrx/effects": ~16.3.0
     "@ngrx/entity": ~16.3.0
     "@ngrx/store": ~16.3.0
@@ -8492,7 +8525,9 @@ __metadata:
     "@typescript-eslint/eslint-plugin": ^5.60.1
     "@typescript-eslint/parser": ^5.60.1
     "@typescript-eslint/types": ^5.60.1
-    bootstrap: ^5.3.1
+    ag-grid-angular: ~29.3.5
+    ag-grid-community: ~29.3.5
+    bootstrap: 5.2.0
     bootstrap-icons: ^1.10.5
     eslint: ^8.42.0
     eslint-import-resolver-node: ^0.3.4
@@ -12488,6 +12523,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ag-grid-angular@npm:~29.3.5":
+  version: 29.3.5
+  resolution: "ag-grid-angular@npm:29.3.5"
+  dependencies:
+    tslib: ^2.3.0
+  peerDependencies:
+    "@angular/common": ">= 12.0.0"
+    "@angular/core": ">= 12.0.0"
+    ag-grid-community: ~29.3.5
+  checksum: e937c73cc91c4e4a1b2a74d67dfe710b5596a5f14330cc368a2ffd434e7bfbc84e2a10d6463fccf350cdf1dc1d863f2b81ff8b365ef3becb5dd58ca97555e7a4
+  languageName: node
+  linkType: hard
+
+"ag-grid-community@npm:~29.3.5":
+  version: 29.3.5
+  resolution: "ag-grid-community@npm:29.3.5"
+  checksum: ad071f6ea80ebfa96e79d3e9e77947a52182c783bcee5f7ed377f5de2758f0e88bbf3dbace9272c80e7fb566931fe6a56227dd1e2526670a7e17dd1152d854d6
+  languageName: node
+  linkType: hard
+
 "agent-base@npm:5":
   version: 5.1.1
   resolution: "agent-base@npm:5.1.1"
@@ -13766,12 +13821,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bootstrap@npm:^5.3.1":
-  version: 5.3.1
-  resolution: "bootstrap@npm:5.3.1"
+"bootstrap@npm:5.2.0":
+  version: 5.2.0
+  resolution: "bootstrap@npm:5.2.0"
   peerDependencies:
-    "@popperjs/core": ^2.11.8
-  checksum: f8176376aa6c6d8947d58a67f0c57fa0b6b7dcd087ff83454e0d727c07cf33e8107e56aa298045d652f84b53b24ac72457af73e41c5631c9ebdc1909039c5dac
+    "@popperjs/core": ^2.11.5
+  checksum: 9dbfb5d26bbdac3e27a6b46cb7456cd4dd75ae3b48644737809885b8ea9c265d3359c4cdbf25a55bb7e5046f51e441557033ba21eeaf24ef8316bfbb3d420084
   languageName: node
   linkType: hard
 
@@ -30753,6 +30808,13 @@ __metadata:
   version: 1.14.1
   resolution: "tslib@npm:1.14.1"
   checksum: dbe628ef87f66691d5d2959b3e41b9ca0045c3ee3c7c7b906cc1e328b39f199bb1ad9e671c39025bd56122ac57dfbf7385a94843b1cc07c60a4db74795829acd
+  languageName: node
+  linkType: hard
+
+"tslib@npm:^2.3.1":
+  version: 2.6.2
+  resolution: "tslib@npm:2.6.2"
+  checksum: 329ea56123005922f39642318e3d1f0f8265d1e7fcb92c633e0809521da75eeaca28d2cf96d7248229deb40e5c19adf408259f4b9640afd20d13aecc1430f3ad
   languageName: node
   linkType: hard
 
