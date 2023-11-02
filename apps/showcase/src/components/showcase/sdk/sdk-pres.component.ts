@@ -5,12 +5,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgbHighlight, NgbPagination } from '@ng-bootstrap/ng-bootstrap';
 import { O3rComponent } from '@o3r/core';
+import { OtterPickerPresComponent } from '../../utilities';
 
 @O3rComponent({ componentType: 'Component' })
 @Component({
   selector: 'o3r-sdk-pres',
   standalone: true,
-  imports: [CommonModule, NgbHighlight, FormsModule, NgbPagination],
+  imports: [CommonModule, NgbHighlight, FormsModule, NgbPagination, OtterPickerPresComponent],
   templateUrl: './sdk-pres.template.html',
   styleUrls: ['./sdk-pres.style.scss'],
   encapsulation: ViewEncapsulation.None,
@@ -23,6 +24,11 @@ export class SdkPresComponent {
    * Name input used to create new pets
    */
   public petName = signal('');
+
+  /**
+   * File input used to create new pets
+   */
+  public petImage = signal('');
 
   /**
    * Search term used to filter the list of pets
@@ -98,7 +104,7 @@ export class SdkPresComponent {
     this.isLoading.set(true);
     this.hasErrors.set(false);
     return this.petStoreApi.findPetsByStatus({status: 'available'}).then((pets) => {
-      this.pets.set(pets.sort((a, b) => a.id && b.id && a.id - b.id || 0));
+      this.pets.set(pets.filter((p) => p.category?.name === 'otter').sort((a, b) => a.id && b.id && a.id - b.id || 0));
       this.isLoading.set(false);
     }).catch(() => {
       this.isLoading.set(false);
@@ -116,13 +122,22 @@ export class SdkPresComponent {
       category: {name: 'otter'},
       tags: [{name: 'otter'}],
       status: 'available',
-      photoUrls: []
+      photoUrls: this.petName() ? [this.petImage()] : []
     };
     this.isLoading.set(true);
     await this.petStoreApi.addPet({
       // eslint-disable-next-line @typescript-eslint/naming-convention
       Pet: pet
     });
+    if (pet.photoUrls.length) {
+      const baseUrl = location.href.split('/#', 1)[0];
+      const filePath = `${baseUrl}${pet.photoUrls[0]}`;
+      const blob = await (await fetch(filePath)).blob();
+      await this.petStoreApi.uploadFile({
+        petId: pet.id!,
+        body: new File([blob], filePath, {type: blob.type})
+      });
+    }
     await this.reload();
   }
 
