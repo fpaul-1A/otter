@@ -42,6 +42,7 @@ jobs:
       version: ${{ needs.version.outputs.nextVersionTag }}
       prerelease: true
       isPullRequest: true
+      gitRef: ${{ github.base_ref }}
 
   notify-parent:
     runs-on: ubuntu-latest
