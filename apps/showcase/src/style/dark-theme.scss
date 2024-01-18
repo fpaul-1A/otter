@@ -5,7 +5,8 @@
 --bs-primary: var(--color-primary);
 .nav-pills { --bs-nav-pills-link-active-color: var(--color-primary); }
 --bs-tertiary-bg: var(--color-neutral-gray-light) !important;
---bs-body-bg: var(--color-accent-A100);
+--bs-body-bg: #000000;
+--bs-body-color: #ffffff;
 --color-primary-50: #e6edfc;
 --color-primary-100: #c2d3f7;
 --color-primary-200: #99b6f2;
@@ -31,10 +32,10 @@
 --color-accent-700: #2fabff;
 --color-accent-800: #27a3ff;
 --color-accent-900: #1a94ff;
---color-accent-A700: #b2d8ff;
---color-accent-A400: #cbe5ff;
---color-accent-A200: #feffff;
---color-accent-A100: #ffffff;
+--color-accent-A700: #000000;
+--color-accent-A400: #000000;
+--color-accent-A200: #000000;
+--color-accent-A100: #000000;
 --color-accent: var(--color-accent-500);
 --color-highlight-50: #f4e5ff;
 --color-highlight-100: #e4beff;

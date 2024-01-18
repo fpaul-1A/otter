@@ -65,7 +65,19 @@
             "output": "/localizations"
           }
         ],
-        "styles": ["apps/showcase/src/styles.scss"],
+        "styles": [
+          "apps/showcase/src/styles.scss",
+          {
+            "inject": false,
+            "input": "apps/showcase/src/style/dark-theme.scss",
+            "bundleName": "dark-theme"
+          },
+          {
+            "inject": false,
+            "input": "apps/showcase/src/style/random-theme.scss",
+            "bundleName": "random-theme"
+          }
+        ],
         "scripts": []
       },
       "configurations": {

@@ -21,6 +21,11 @@
         },
         "$value": "{color.neutral.gray-light}"
       }
+    },
+    "body": {
+      "bg": {
+        "$value": "{color.accent.A100}"
+      }
     }
   },
   "run-app-locally": {
