@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../../packages/@o3r/design/schemas/design-token.schema.json",
+  "$schema": "../../../../../packages/@o3r/design/schemas/design-token.schema.json",
   "bs": {
     "primary": {
       "$description": "Application Primary color",
@@ -19,22 +19,31 @@
         "$extensions": {
           "o3rImportant": true
         },
-        "$value": "{color.neutral.gray-light}"
+        "$type": "color",
+        "$value": "#333333"
       }
     },
     "body": {
       "bg": {
-        "$value": "{color.accent.A100}"
+        "$type": "color",
+        "$value": "#000000"
+      },
+      "color": {
+        "$type": "color",
+        "$value": "#ffffff"
       }
-    }
-  },
-  "run-app-locally": {
-    "$extensions": {
-      "o3rTargetFile": "app/run-app-locally/run-app-locally.style.scss"
     },
-    "tertiary": {
+    "card": {
+      "$extensions": {
+        "o3rScope": ".card"
+      },
+      "color": {
+        "$type": "color",
+        "$value": "#ffffff"
+      },
       "bg": {
-        "$value": "{color.primary.50}"
+        "$type": "color",
+        "$value": "#000000"
       }
     }
   }

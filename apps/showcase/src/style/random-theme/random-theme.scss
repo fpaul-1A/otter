@@ -4,8 +4,11 @@
 /* Application Primary color */
 --bs-primary: var(--color-primary);
 .nav-pills { --bs-nav-pills-link-active-color: var(--color-primary); }
---bs-tertiary-bg: var(--color-neutral-gray-light) !important;
---bs-body-bg: var(--color-accent-A100);
+--bs-tertiary-bg: #b0cba6 !important;
+--bs-body-bg: #fa976a;
+--bs-body-color: #1b2254;
+.card { --bs-card-color: #086b5d; }
+.card { --bs-card-bg: #ceb3dc; }
 --color-primary-50: #e6edfc;
 --color-primary-100: #c2d3f7;
 --color-primary-200: #99b6f2;
@@ -19,7 +22,7 @@
 --color-primary-A700: #839aff;
 --color-primary-A400: #9caeff;
 --color-primary-A200: #cfd8ff;
---color-primary-A100: #ffffff;
+--color-primary-A100: #000000;
 --color-primary: var(--color-primary-500);
 --color-accent-50: #e8f7ff;
 --color-accent-100: #c5eaff;

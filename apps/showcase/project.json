@@ -65,7 +65,19 @@
             "output": "/localizations"
           }
         ],
-        "styles": ["apps/showcase/src/styles.scss"],
+        "styles": [
+          "apps/showcase/src/styles.scss",
+          {
+            "inject": false,
+            "input": "apps/showcase/src/style/dark-theme/dark-theme.scss",
+            "bundleName": "dark-theme"
+          },
+          {
+            "inject": false,
+            "input": "apps/showcase/src/style/random-theme/random-theme.scss",
+            "bundleName": "random-theme"
+          }
+        ],
         "scripts": []
       },
       "configurations": {
@@ -175,12 +187,60 @@
         "{projectRoot}/src/**/*.scss"
       ],
       "inputs": [
-        "{projectRoot}/src/style/design-token.json"
+        "{projectRoot}/src/style/design-token.*.json"
       ],
       "options": {
         "metadataOutput": "apps/showcase/styling.metadata.json",
         "defaultStyleFile": "apps/showcase/src/style/theme.scss",
         "designTokenFilePatterns": "apps/showcase/src/style/design-token.*.json",
+        "rootPath": "apps/showcase/src"
+      },
+      "configurations": {
+        "watch": {
+          "watch": true
+        }
+      },
+      "dependsOn": [
+        "^build-builders"
+      ]
+    },
+    "generate-dark-theme": {
+      "executor": "@o3r/design:generate-css",
+      "outputs": [
+        "{options.defaultStyleFile}",
+        "{options.metadataOutput}",
+        "{projectRoot}/src/**/*.scss"
+      ],
+      "inputs": [
+        "{projectRoot}/src/style/dark-theme/dark-theme.*.json"
+      ],
+      "options": {
+        "defaultStyleFile": "apps/showcase/src/style/dark-theme/dark-theme.scss",
+        "designTokenFilePatterns": "apps/showcase/src/style/dark-theme/dark-theme.*.json",
+        "rootPath": "apps/showcase/src"
+      },
+      "configurations": {
+        "watch": {
+          "watch": true
+        }
+      },
+      "dependsOn": [
+        "^build-builders"
+      ]
+    },
+    "generate-random-theme": {
+      "executor": "@o3r/design:generate-css",
+      "outputs": [
+        "{options.defaultStyleFile}",
+        "{options.metadataOutput}",
+        "{projectRoot}/src/**/*.scss"
+      ],
+      "inputs": [
+        "{projectRoot}/src/style/dark-theme/random-theme.*.json"
+      ],
+      "options": {
+        "defaultStyleFile": "apps/showcase/src/style/random-theme/random-theme.scss",
+        "designTokenFilePatterns": "apps/showcase/src/style/random-theme/random-theme.*.json",
         "rootPath": "apps/showcase/src"
       },
       "configurations": {
