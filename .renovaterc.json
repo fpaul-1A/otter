@@ -113,13 +113,19 @@
         "^@schematics",
         "angular",
         "^@ngrx",
-        "^zone.js",
+        "^zone.js"
+      ],
+      "groupName": "Angular dependencies",
+      "groupSlug": "angular-dependencies"
+    },
+    {
+      "matchPackagePatterns": [
         "^@nrwl",
         "^@nx",
         "^nx"
       ],
-      "groupName": "Angular dependencies",
-      "groupSlug": "angular-dependencies"
+      "groupName": "Nx dependencies",
+      "groupSlug": "nx-dependencies"
     },
     {
       "matchPackagePatterns": [
