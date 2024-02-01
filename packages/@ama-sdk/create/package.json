@@ -21,7 +21,7 @@
     "@ama-sdk/schematics": "workspace:^",
     "@angular-devkit/core": "~17.1.2",
     "@angular-devkit/schematics": "~17.1.2",
-    "@angular-devkit/schematics-cli": "~17.0.3",
+    "@angular-devkit/schematics-cli": "~17.1.0",
     "@angular/cli": "~17.1.2",
     "@o3r/schematics": "workspace:^",
     "@openapitools/openapi-generator-cli": "~2.9.0",
