@@ -38,7 +38,7 @@ jobs:
       - name: Publish tests reports
         if: failure()
         # TODO upgrade to v4 when https://github.com/AmadeusITGroup/otter/issues/1198 is fixed
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: e2e-report
           path: apps/showcase/playwright-reports
