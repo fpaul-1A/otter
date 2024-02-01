@@ -21,8 +21,7 @@
         "^build",
         "build-panel",
         "build-components",
-        "build-extension",
-        "copy-assets"
+        "build-extension"
       ]
     },
     "build-components": {
