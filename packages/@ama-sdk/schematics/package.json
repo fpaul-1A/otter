@@ -55,7 +55,7 @@
     "@angular/cli": "^17.0.1",
     "@o3r/schematics": "workspace:^",
     "@openapitools/openapi-generator-cli": "~2.9.0",
-    "@schematics/angular": "~17.0.0"
+    "@schematics/angular": "~17.1.2"
   },
   "dependencies": {
     "@angular-devkit/core": "~17.0.3",
@@ -79,7 +79,7 @@
     "@o3r/schematics": "workspace:^",
     "@o3r/test-helpers": "workspace:^",
     "@openapitools/openapi-generator-cli": "~2.9.0",
-    "@schematics/angular": "~17.0.3",
+    "@schematics/angular": "~17.1.2",
     "@stylistic/eslint-plugin-ts": "^1.5.4",
     "@types/jest": "~29.5.2",
     "@types/js-yaml": "^4.0.5",

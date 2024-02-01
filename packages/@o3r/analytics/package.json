@@ -33,7 +33,7 @@
     "@ngrx/store": "~17.1.0",
     "@o3r/core": "workspace:^",
     "@o3r/schematics": "workspace:^",
-    "@schematics/angular": "~17.0.0",
+    "@schematics/angular": "~17.1.2",
     "jasmine": "^5.0.0",
     "rxjs": "^7.8.1",
     "webpack": "~5.90.0"
@@ -80,7 +80,7 @@
     "@o3r/core": "workspace:^",
     "@o3r/eslint-plugin": "workspace:^",
     "@o3r/test-helpers": "workspace:^",
-    "@schematics/angular": "~17.0.3",
+    "@schematics/angular": "~17.1.2",
     "@stylistic/eslint-plugin-ts": "^1.5.4",
     "@types/jasmine": "~5.1.0",
     "@types/jest": "~29.5.2",

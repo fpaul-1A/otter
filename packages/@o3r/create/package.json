@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@angular/cli": "~17.0.3",
-    "@schematics/angular": "~17.0.3",
+    "@schematics/angular": "~17.1.2",
     "minimist": "^1.2.6",
     "tslib": "^2.5.3"
   },
