@@ -34,7 +34,7 @@
     "winston": "^3.8.2"
   },
   "peerDependencies": {
-    "@angular-devkit/schematics": "~17.0.0",
+    "@angular-devkit/schematics": "~17.1.2",
     "@angular/common": "~17.1.2",
     "@angular/core": "~17.1.2",
     "@capacitor/browser": "^5.0.0",
@@ -62,9 +62,9 @@
     }
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~17.0.3",
-    "@angular-devkit/core": "~17.0.3",
-    "@angular-devkit/schematics": "~17.0.3",
+    "@angular-devkit/build-angular": "~17.1.2",
+    "@angular-devkit/core": "~17.1.2",
+    "@angular-devkit/schematics": "~17.1.2",
     "@angular-eslint/eslint-plugin": "~17.2.0",
     "@angular/cli": "~17.1.2",
     "@angular/common": "~17.1.2",

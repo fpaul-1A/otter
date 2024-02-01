@@ -49,8 +49,8 @@
   },
   "peerDependencies": {
     "@ama-sdk/core": "workspace:^",
-    "@angular-devkit/core": "~17.0.0",
-    "@angular-devkit/schematics": "~17.0.0",
+    "@angular-devkit/core": "~17.1.2",
+    "@angular-devkit/schematics": "~17.1.2",
     "@angular-devkit/schematics-cli": "^17.0.1",
     "@angular/cli": "^17.0.1",
     "@o3r/schematics": "workspace:^",
@@ -58,8 +58,8 @@
     "@schematics/angular": "~17.1.2"
   },
   "dependencies": {
-    "@angular-devkit/core": "~17.0.3",
-    "@angular-devkit/schematics": "~17.0.3",
+    "@angular-devkit/core": "~17.1.2",
+    "@angular-devkit/schematics": "~17.1.2",
     "js-yaml": "^4.1.0",
     "minimatch": "~9.0.3",
     "rxjs": "^7.8.1",

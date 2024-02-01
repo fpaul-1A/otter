@@ -60,8 +60,8 @@
   "devDependencies": {
     "@ama-sdk/core": "workspace:^",
     "@ama-sdk/schematics": "workspace:^",
-    "@angular-devkit/core": "~17.0.3",
-    "@angular-devkit/schematics": "~17.0.3",
+    "@angular-devkit/core": "~17.1.2",
+    "@angular-devkit/schematics": "~17.1.2",
     "@angular-devkit/schematics-cli": "~17.0.3",
     "@angular-eslint/eslint-plugin": "~17.2.0",
     "@angular-eslint/eslint-plugin-template": "~17.2.0",

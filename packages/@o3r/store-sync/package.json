@@ -23,8 +23,8 @@
   },
   "peerDependencies": {
     "@ama-sdk/core": "workspace:^",
-    "@angular-devkit/core": "~17.0.0",
-    "@angular-devkit/schematics": "~17.0.0",
+    "@angular-devkit/core": "~17.1.2",
+    "@angular-devkit/schematics": "~17.1.2",
     "@ngrx/entity": "~17.1.0",
     "@ngrx/store": "~17.1.0",
     "@o3r/core": "workspace:^",
@@ -49,9 +49,9 @@
   },
   "devDependencies": {
     "@ama-sdk/core": "workspace:^",
-    "@angular-devkit/build-angular": "~17.0.3",
-    "@angular-devkit/core": "~17.0.3",
-    "@angular-devkit/schematics": "~17.0.3",
+    "@angular-devkit/build-angular": "~17.1.2",
+    "@angular-devkit/core": "~17.1.2",
+    "@angular-devkit/schematics": "~17.1.2",
     "@angular-eslint/eslint-plugin": "~17.2.0",
     "@angular/common": "~17.1.2",
     "@angular/compiler": "~17.1.2",

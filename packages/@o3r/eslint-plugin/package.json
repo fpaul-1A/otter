@@ -52,8 +52,8 @@
     "yaml-eslint-parser": "^1.2.2"
   },
   "devDependencies": {
-    "@angular-devkit/core": "~17.0.3",
-    "@angular-devkit/schematics": "~17.0.3",
+    "@angular-devkit/core": "~17.1.2",
+    "@angular-devkit/schematics": "~17.1.2",
     "@angular-eslint/eslint-plugin": "~17.2.0",
     "@angular-eslint/template-parser": "~17.2.0",
     "@angular-eslint/utils": "~17.2.0",

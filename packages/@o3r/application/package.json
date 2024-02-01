@@ -24,7 +24,7 @@
     "prepare:publish": "prepare-publish ./dist"
   },
   "peerDependencies": {
-    "@angular-devkit/schematics": "~17.0.0",
+    "@angular-devkit/schematics": "~17.1.2",
     "@angular/common": "~17.1.2",
     "@angular/core": "~17.1.2",
     "@o3r/core": "workspace:^",
@@ -51,9 +51,9 @@
     "tslib": "^2.5.3"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~17.0.3",
-    "@angular-devkit/core": "~17.0.3",
-    "@angular-devkit/schematics": "~17.0.3",
+    "@angular-devkit/build-angular": "~17.1.2",
+    "@angular-devkit/core": "~17.1.2",
+    "@angular-devkit/schematics": "~17.1.2",
     "@angular-eslint/eslint-plugin": "~17.2.0",
     "@angular/common": "~17.1.2",
     "@angular/compiler": "~17.1.2",

@@ -78,10 +78,10 @@
     }
   },
   "devDependencies": {
-    "@angular-devkit/architect": "~0.1700.3",
-    "@angular-devkit/build-angular": "~17.0.3",
-    "@angular-devkit/core": "~17.0.3",
-    "@angular-devkit/schematics": "~17.0.3",
+    "@angular-devkit/architect": "~0.1701.2",
+    "@angular-devkit/build-angular": "~17.1.2",
+    "@angular-devkit/core": "~17.1.2",
+    "@angular-devkit/schematics": "~17.1.2",
     "@angular-eslint/eslint-plugin": "~17.2.0",
     "@angular/cli": "~17.1.2",
     "@angular/common": "~17.1.2",

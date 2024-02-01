@@ -98,7 +98,7 @@
   },
   "peerDependencies": {
     "@amadeus-it-group/kassette": "^1.7.0",
-    "@angular-devkit/schematics": "~17.0.0",
+    "@angular-devkit/schematics": "~17.1.2",
     "@angular/common": "~17.1.2",
     "@angular/core": "~17.1.2",
     "@angular/forms": "~17.1.2",
@@ -162,9 +162,9 @@
   },
   "devDependencies": {
     "@amadeus-it-group/kassette": "^1.7.0",
-    "@angular-devkit/build-angular": "~17.0.3",
-    "@angular-devkit/core": "~17.0.3",
-    "@angular-devkit/schematics": "~17.0.3",
+    "@angular-devkit/build-angular": "~17.1.2",
+    "@angular-devkit/core": "~17.1.2",
+    "@angular-devkit/schematics": "~17.1.2",
     "@angular-eslint/eslint-plugin": "~17.2.0",
     "@angular/cli": "~17.1.2",
     "@angular/common": "~17.1.2",
