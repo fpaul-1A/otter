@@ -344,6 +344,10 @@
       "bg": {
         "$type": "color",
         "$value": "#333333"
+      },
+      "bg-rgb": {
+        "$type": "color",
+        "$value": "51, 51, 51"
       }
     },
     "card": {
@@ -357,6 +361,40 @@
       "bg": {
         "$type": "color",
         "$value": "#000000"
+      }
+    },
+    "scrollspy": {
+      "color": {
+        "$type": "color",
+        "$value": "#ffffff",
+        "$extensions": {
+          "o3rScope": ".nav.nav-pills .nav-link"
+        }
+      },
+      "active-color": {
+        "$type": "color",
+        "$value": "{color.primary.400}",
+        "$extensions": {
+          "o3rScope": ".nav.nav-pills .nav-link"
+        }
+      }
+    },
+    "nav-pills": {
+      "link-active-bg": {
+        "$type": "color",
+        "$value": "transparent",
+        "$extensions": {
+          "o3rScope": ".nav-pills"
+        }
+      }
+    },
+    "btn-close": {
+      "active-color": {
+        "$type": "color",
+        "$value": "#fff",
+        "$extensions": {
+          "o3rScope": ".btn-close"
+        }
       }
     }
   }
