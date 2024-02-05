@@ -2,7 +2,8 @@
   $prefix: bs-,
   $df-spinner-circumference: 2rem,
   $font-path: '@design-factory/design-factory/assets/fonts',
-  $df-scrollspy-color: var(--bs-scrollspy-color)
+  $df-scrollspy-color: var(--bs-scrollspy-color),
+  $utilities-bg: ()
 );
 @use "bootstrap-icons/font/bootstrap-icons";
 @import "highlight.js/styles/github.css";
