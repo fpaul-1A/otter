@@ -49,6 +49,9 @@ on:
 env:
   NX_SKIP_NX_CACHE: ${{ inputs.skipNxCache }}
 
+permissions:
+  contents: read
+
 jobs:
   publish:
     runs-on: ubuntu-latest
