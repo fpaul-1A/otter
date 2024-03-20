@@ -11610,13 +11610,13 @@ __metadata:
   linkType: hard
 
 "@types/react@npm:^16, @types/react@npm:^16.14.34":
-  version: 16.14.57
-  resolution: "@types/react@npm:16.14.57"
+  version: 16.14.59
+  resolution: "@types/react@npm:16.14.59"
   dependencies:
     "@types/prop-types": "npm:*"
     "@types/scheduler": "npm:*"
     csstype: "npm:^3.0.2"
-  checksum: 10/68c29ab489e2d47bac882b4ff1e6e25747069ea602b6925e135cac6633a272037dd5ea578050b7e815646fae13e6f5b90b22ca45399aee1a6907f5065f47221a
+  checksum: 10/d4710c845b2bbf8142af4fb799b876952b4521dd64249ee2b44b183e2943b745649b01c21344289405a0544c116b42ef3771dc36be67d0c467834ffa7e1ca63b
   languageName: node
   linkType: hard
 
