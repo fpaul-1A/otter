@@ -4,7 +4,7 @@
   "extends": [
     "github>fpaul-1A/otter//tools/renovate/group/otter",
     "github>fpaul-1A/otter//tools/renovate/tasks/base",
-    "github>fpaul-1A/otter//tools/renovate/tasks/sdk-regeneration(yarn)",
+    "github>fpaul-1A/otter//tools/renovate/tasks/sdk-regenerate(yarn)",
     "github>fpaul-1A/otter//tools/renovate/tasks/yarn-pnp"
   ]
 }
