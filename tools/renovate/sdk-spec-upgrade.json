@@ -3,6 +3,6 @@
   "description": "Trigger SDK regeneration for a specific package name with yarn",
   "extends": [
     "github>fpaul-1A/otter//tools/renovate/group/sdk-spec({{arg0}})",
-    "github>fpaul-1A/otter//tools/renovate/tasks/sdk-spec-regeneration(yarn, {{arg0}})"
+    "github>fpaul-1A/otter//tools/renovate/tasks/sdk-spec-regenerate(yarn, {{arg0}})"
   ]
 }
