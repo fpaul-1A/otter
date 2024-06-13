@@ -5533,19 +5533,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ng-bootstrap/ng-bootstrap@npm:^16.0.0":
-  version: 16.0.0
-  resolution: "@ng-bootstrap/ng-bootstrap@npm:16.0.0"
+"@ng-bootstrap/ng-bootstrap@npm:^17.0.0":
+  version: 17.0.0
+  resolution: "@ng-bootstrap/ng-bootstrap@npm:17.0.0"
   dependencies:
     tslib: "npm:^2.3.0"
   peerDependencies:
-    "@angular/common": ^17.0.0
-    "@angular/core": ^17.0.0
-    "@angular/forms": ^17.0.0
-    "@angular/localize": ^17.0.0
+    "@angular/common": ^18.0.0
+    "@angular/core": ^18.0.0
+    "@angular/forms": ^18.0.0
+    "@angular/localize": ^18.0.0
     "@popperjs/core": ^2.11.8
     rxjs: ^6.5.3 || ^7.4.0
-  checksum: 10/ae747d9d04cbfdcdf84fa8ee75692ecbbc498e2c1af1299e9a18112cf313ad770a3c59b046f6fa2f52804ffc9eb86a445ea7a5a07e329f0c6e61db95b9dddf05
+  checksum: 10/5b7bce7ce3125985d2e6010e5eb553efbd91e861f2c8d7cb1fd70123a7420b7770a56f5956fcccd40cbf13d39fccc2021bab7c9176b13880eadf32291847ae13
   languageName: node
   linkType: hard
 
@@ -6725,7 +6725,7 @@ __metadata:
     "@angular/platform-browser-dynamic": "npm:~17.3.0"
     "@angular/router": "npm:~17.3.0"
     "@design-factory/design-factory": "npm:^17.0.0"
-    "@ng-bootstrap/ng-bootstrap": "npm:^16.0.0"
+    "@ng-bootstrap/ng-bootstrap": "npm:^17.0.0"
     "@ngrx/entity": "npm:~17.1.0"
     "@ngrx/store": "npm:~17.1.0"
     "@nx/eslint-plugin": "npm:~18.2.0"
@@ -7724,7 +7724,7 @@ __metadata:
     "@commitlint/config-conventional": "npm:^18.0.0"
     "@compodoc/compodoc": "npm:^1.1.19"
     "@design-factory/design-factory": "npm:^17.0.0"
-    "@ng-bootstrap/ng-bootstrap": "npm:^16.0.0"
+    "@ng-bootstrap/ng-bootstrap": "npm:^17.0.0"
     "@ngrx/effects": "npm:~17.1.0"
     "@ngrx/entity": "npm:~17.1.0"
     "@ngrx/router-store": "npm:~17.1.0"
@@ -8478,7 +8478,7 @@ __metadata:
     "@angular/router": "npm:~17.3.0"
     "@design-factory/design-factory": "npm:^17.0.0"
     "@formatjs/intl-numberformat": "npm:~8.10.0"
-    "@ng-bootstrap/ng-bootstrap": "npm:^16.0.0"
+    "@ng-bootstrap/ng-bootstrap": "npm:^17.0.0"
     "@ngrx/effects": "npm:~17.1.0"
     "@ngrx/entity": "npm:~17.1.0"
     "@ngrx/store": "npm:~17.1.0"
