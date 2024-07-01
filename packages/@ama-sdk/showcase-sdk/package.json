@@ -92,7 +92,7 @@
     "chokidar": "^3.5.2",
     "commit-and-tag-version": "^12.0.0",
     "cpy-cli": "^5.0.0",
-    "eslint": "^8.57.0",
+    "eslint": "^9.0.0",
     "eslint-plugin-jest": "~28.6.0",
     "eslint-plugin-jsdoc": "~48.2.1",
     "eslint-plugin-prefer-arrow": "~1.2.3",
