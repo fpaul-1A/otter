@@ -35,8 +35,8 @@
     "typescript": "~5.4.2"
   },
   "devDependencies": {
-    "@angular-eslint/eslint-plugin": "~18.0.0",
-    "@nx/eslint-plugin": "~19.3.0",
+    "@angular-eslint/eslint-plugin": "~18.2.0",
+    "@nx/eslint-plugin": "~19.5.0",
     "@o3r/eslint-plugin": "workspace:^",
     "@stylistic/eslint-plugin-ts": "^2.0.0",
     "@types/node": "^20.0.0",
@@ -49,7 +49,7 @@
     "eslint-plugin-jsdoc": "~48.2.1",
     "eslint-plugin-prefer-arrow": "~1.2.3",
     "eslint-plugin-unicorn": "^54.0.0",
-    "nx": "~19.3.0",
+    "nx": "~19.5.0",
     "typescript": "~5.4.2"
   },
   "otter": {
