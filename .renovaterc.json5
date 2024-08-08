@@ -103,7 +103,10 @@
     {
       "matchManagers": ["maven"],
       "groupName": "Open API updates",
-      "groupSlug": "openapi"
+      "groupSlug": "openapi",
+      "includePaths": [
+        "packages/@ama-sdk/schematics"
+      ]
     },
     {
       // We don't want to update this dep as we are still targeting a fork
@@ -116,13 +119,13 @@
   customManagers: [
     {
       "customType": "regex",
-      datasourceTemplate: "maven",
+      "datasourceTemplate": "maven",
       "depNameTemplate": "org.openapitools:openapi-generator",
       "fileMatch": [
-        "packages/@ama-sdk/schematics/package.json"
+        "packages/@ama-sdk/schematics/package\\.json"
       ],
       "matchStrings": [
-        "\"openApiSupportedVersion\": \"(?<currentValue>.*?)\","
+        "\"openApiSupportedVersion\": \"~(?<currentValue>[^\"]+)\""
       ]
     }
   ]
