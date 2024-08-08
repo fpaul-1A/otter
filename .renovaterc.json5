@@ -13,7 +13,8 @@
   "enabledManagers": [
     "npm",
     "github-actions",
-    "gradle"
+    "gradle",
+    "maven"
   ],
   "labels": [
     "dependencies"
