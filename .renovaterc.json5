@@ -14,7 +14,8 @@
     "npm",
     "github-actions",
     "gradle",
-    "maven"
+    "maven",
+    "regex"
   ],
   "labels": [
     "dependencies"
@@ -96,6 +97,26 @@
         ".*markdown-link-check"
       ],
       "enabled": false
+    },
+
+    // OpenAPI updates
+    {
+      "matchManagers": ["maven"],
+      "groupName": "Open API updates",
+      "groupSlug": "openapi"
+    }
+  ],
+  customManagers: [
+    {
+      "customType": "regex",
+      datasourceTemplate: "maven",
+      "depNameTemplate": "org.openapitools:openapi-generator",
+      "fileMatch": [
+        "packages/@ama-sdk/schematics/package.json"
+      ],
+      "matchStrings": [
+        "\"openApiSupportedVersion\": \"(?<currentValue>.*?)\","
+      ]
     }
   ]
 }
