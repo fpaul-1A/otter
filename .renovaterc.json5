@@ -109,6 +109,13 @@
       ]
     },
     {
+      "matchDepNames": [
+        "org.openapitools:openapi-generator"
+      ],
+      "groupName": "Open API updates",
+      "groupSlug": "openapi"
+    },
+    {
       // We don't want to update this dep as we are still targeting a fork
       "matchPackageNames": [
         "io.swagger:swagger-codegen-cli"
