@@ -1,0 +1,29 @@
+name: Check releases
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "20 * * * *"
+permissions:
+  contents: read
+  issues: write
+jobs:
+  findTags:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+      - run: |
+          TAGS=$(git tag -l | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | awk -F. '{print $1"."$2}' | uniq | xargs -I {} sh -c 'git tag -l "{}.*" | sort -V | tail -n 1')
+          echo "TAGS=$TAGS" >> $GITHUB_ENV
+        id: getTags
+
+  checkRelease:
+    needs: findTags
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        tag: ${{ fromJson(needs.findTags.outputs.getTags) }}
+    steps:
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        with:
+          ref: ${{ matrix.tag }}
+      - run: echo ${{ matrix.tag }}

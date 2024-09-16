@@ -8,6 +8,10 @@ on:
         default: false
         required: false
         description: Skip the nx cache
+      ref:
+        type: string
+        default: ''
+        description: The branch, tag or SHA to checkout.
     secrets:
       NX_CLOUD_ACCESS_TOKEN:
         required: false
@@ -27,7 +31,11 @@ jobs:
       NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
     steps:
       - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        with:
+          ref: ${{ inputs.ref }}
       - uses: ./tools/github-actions/download-build-output
+        with:
+          artifactName: ${{ inputs.ref && format('dist-{0}', inputs.ref) || 'dist' }}
       - uses: ./tools/github-actions/setup
       - name: Setup verdaccio once for all tests
         id: setup-verdaccio
@@ -64,7 +72,11 @@ jobs:
       PREPARE_TEST_ENV_TYPE: ${{ matrix.testEnvironment }}
     steps:
       - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        with:
+          ref: ${{ inputs.ref }}
       - uses: ./tools/github-actions/download-build-output
+        with:
+          artifactName: ${{ inputs.ref && format('dist-{0}', inputs.ref) || 'dist' }}
       - uses: ./tools/github-actions/setup
       - shell: bash
         run: |
