@@ -1,0 +1,53 @@
+name: Check releases
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "20 * * * *"
+permissions:
+  contents: read
+  issues: write
+jobs:
+  findTags:
+    runs-on: ubuntu-latest
+    outputs:
+      tags: ${{ steps.getTags.outputs.TAGS }}
+    steps:
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+      - run: |
+          TAGS=$(git tag -l | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | awk -F. '{print $1"."$2}' | uniq | xargs -I {} sh -c 'git tag -l "{}.*" | sort -V | tail -n 1' | xargs -d'\n' -I {} echo '"{}"' | tr '\n' ',')
+          echo "TAGS=[$TAGS]" >> "$GITHUB_OUTPUT"
+        id: getTags
+
+  buildRelease:
+    needs: findTags
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        #tag: ${{ fromJSON(needs.findTags.outputs.tags) }}
+        tag: [v10.4.9]
+    steps:
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        with:
+          ref: ${{ matrix.tag }}
+      - uses: ./tools/github-actions/setup
+      - uses: ./.github/actions/setup-java
+        with:
+          install-jdk: 'true'
+      - run: yarn build:swagger-gen
+      - run: yarn build
+      - uses: ./tools/github-actions/upload-build-output
+        with:
+          artifactName: 'dist-${{ matrix.tag }}'
+
+  testRelease:
+    needs: [findTags, buildRelease]
+    strategy:
+      matrix:
+        #tag: ${{ fromJSON(needs.findTags.outputs.tags) }}
+        tag: [v10.4.9]
+    uses: ./.github/workflows/it-tests.yml
+    with:
+      ref: ${{ matrix.tag }}
