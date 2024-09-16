@@ -1,0 +1,54 @@
+name: Check all releases (latest patch of each minor version for the last 3 majors)
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * 6"
+
+permissions:
+  contents: read
+  issues: write
+
+env:
+  YARN_ENABLE_HARDENED_MODE: 0
+
+jobs:
+  findTags:
+    runs-on: ubuntu-latest
+    outputs:
+      tags: ${{ steps.getTags.outputs.TAGS }}
+    steps:
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+      - name: Get the latest patch of each minor version for the last 3 majors
+        run: |
+          SUPPORTED_MAJORS=$(git tag -l | sort -V | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | awk -F. '{print $1}' | uniq | tail -n 3)
+          ALL_MINOR_TAGS=$(git tag -l | grep -E "^($SUPPORTED_MAJORS)\." | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | awk -F. '{print $1"."$2}' | uniq | xargs -I {} sh -c 'git tag -l "{}.*" | sort -V | tail -n 1' | xargs -d'\n' -I {} echo '"{}"' | tr '\n' ',')
+          echo "TAGS=[ALL_MINOR_TAGS]" >> "$GITHUB_OUTPUT"
+        id: getTags
+
+  checkRelease:
+    needs: findTags
+    strategy:
+      fail-fast: false
+      matrix:
+        tag: ${{ fromJSON(needs.findTags.outputs.tags) }}
+    uses: ./.github/workflows/check-release.yml
+    with:
+      ref: ${{ matrix.tag }}
+
+  report:
+    runs-on: ubuntu-latest
+    needs: checkRelease
+    if: failure()
+    steps:
+      - name: Create an issue
+        uses: JasonEtco/create-an-issue@1b14a70e4d8dc185e5cc76d3bec9eab20257b2c5 # v2.9.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUN_URL: ${{ format('https://github.com/{0}/actions/runs/{1}/attempts/{2}', github.repository, github.run_id, github.run_attempt || 1) }}
+        with:
+          filename: .github/check-release-issue-template.md
+          update_existing: true
