@@ -67,6 +67,9 @@ jobs:
         with:
           fetch-depth: 2
           ref: ${{ inputs.gitRef }}
+      - name: Update @o3r/pipeline package.json with git commit hash
+        run: |
+          jq '.o3rConfig.commitHash = "${{ github.sha }}"' packages/@o3r/pipeline/dist/package.json > tmp.json && mv tmp.json packages/@o3r/pipeline/dist/package.json
       - uses: ./tools/github-actions/download-build-output
       - uses: ./tools/github-actions/setup
       - run: yarn set:version ${{ inputs.version }}
