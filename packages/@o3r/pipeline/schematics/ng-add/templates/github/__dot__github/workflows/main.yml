@@ -51,7 +51,7 @@ jobs:
       - name: New version
         if: github.event_name != 'merge_group'
         id: new-version
-        uses: AmadeusITGroup/otter/tools/github-actions/new-version@11
+        uses: AmadeusITGroup/otter/tools/github-actions/new-version@10
         with:
           defaultBranch: ${{ env.DEFAULT_BRANCH }}
           defaultBranchPrereleaseName: ${{ env.DEFAULT_BRANCH_PRERELEASE_NAME }}
