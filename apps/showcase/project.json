@@ -67,6 +67,7 @@
         "tsConfig": "apps/showcase/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
+          "apps/showcase/src/test-sw.js",
           "apps/showcase/src/favicon.ico",
           "apps/showcase/src/favicon.svg",
           "apps/showcase/src/assets",
