@@ -7,8 +7,7 @@
   ],
   "timezone": "Europe/Paris",
   "ignorePaths": [
-    "**/node_modules/**",
-    "**/templates/**"
+    "**/node_modules/**"
   ],
   "enabledManagers": [
     "npm",
@@ -113,6 +112,20 @@
         "io.swagger:swagger-codegen-cli"
       ],
       "enabled": false
+    },
+    {
+      // FIXME Don't do that in prod
+      "matchDepTypes": [
+        "*"
+      ],
+      "enabled": false
+    },
+    {
+      // FIXME Don't do that in prod
+      "matchDepTypes": [
+        "github-action"
+      ],
+      "enabled": true
     }
   ],
   "customManagers": [
@@ -131,7 +144,6 @@
   "github-actions": {
     "fileMatch": [
       "(^|/)(__dot__github|workflow-templates|\\.(?:github|gitea|forgejo)/(?:workflows|actions))/.+\\.ya?ml$",
-      "(^|/)action\\.ya?ml$"
     ]
   }
 }
