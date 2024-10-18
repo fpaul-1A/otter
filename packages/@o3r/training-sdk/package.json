@@ -87,7 +87,7 @@
     "@angular/compiler": "~18.2.0",
     "@commitlint/cli": "^19.0.0",
     "@commitlint/config-conventional": "^19.0.0",
-    "@nx/eslint-plugin": "~19.5.0",
+    "@nx/eslint-plugin": "~19.8.0",
     "@o3r/eslint-config-otter": "workspace:^",
     "@o3r/eslint-plugin": "workspace:^",
     "@o3r/schematics": "workspace:^",
