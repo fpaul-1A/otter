@@ -64,7 +64,7 @@
         ],
         "mode": "interactive",
         "commands": [
-          "npm install --legacy-peer-deps --ignore-scripts --force",
+          "npm install --legacy-peer-deps --ignore-scripts --no-audit --prefer-dedupe",
           "npm run ng run sdk:build",
           "npm run ng run tutorial-app:serve"
         ]
@@ -128,7 +128,7 @@
         ],
         "mode": "interactive",
         "commands": [
-          "npm install --legacy-peer-deps --ignore-scripts --force",
+          "npm install --legacy-peer-deps --ignore-scripts --no-audit --prefer-dedupe",
           "npm run ng run app:serve"
         ]
       }
@@ -143,6 +143,10 @@
           {
             "path": ".",
             "contentUrl": "./shared/monorepo-template.json"
+          },
+          {
+            "path": ".",
+            "contentUrl": "./shared/training-sdk-app.json"
           },
           {
             "path": "./libs/sdk/src",
@@ -161,7 +165,7 @@
         ],
         "mode": "interactive",
         "commands": [
-          "npm install --legacy-peer-deps --ignore-scripts --force",
+          "npm install --legacy-peer-deps --ignore-scripts --no-audit --prefer-dedupe",
           "npm run ng run tutorial-app:serve"
         ]
       }
