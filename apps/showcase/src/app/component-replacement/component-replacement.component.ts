@@ -5,7 +5,7 @@ import { IN_PAGE_NAV_PRES_DIRECTIVES, InPageNavPresComponent } from '../../compo
 import { AsyncPipe } from '@angular/common';
 import { ComponentReplacementPresComponent } from '../../components/showcase/component-replacement/component-replacement-pres.component';
 import { RouterModule } from '@angular/router';
-import { CopyTextPresComponent } from '../../components/utilities/copy-text/copy-text-pres.component';
+import { MarkdownModule } from 'ngx-markdown';
 
 @O3rComponent({ componentType: 'Page' })
 @Component({
@@ -15,7 +15,7 @@ import { CopyTextPresComponent } from '../../components/utilities/copy-text/copy
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [RouterModule, InPageNavPresComponent, AsyncPipe, IN_PAGE_NAV_PRES_DIRECTIVES, ComponentReplacementPresComponent, CopyTextPresComponent]
+  imports: [RouterModule, InPageNavPresComponent, AsyncPipe, IN_PAGE_NAV_PRES_DIRECTIVES, ComponentReplacementPresComponent, MarkdownModule]
 })
 export class ComponentReplacementComponent implements AfterViewInit {
   private readonly inPageNavPresService = inject(InPageNavPresService);

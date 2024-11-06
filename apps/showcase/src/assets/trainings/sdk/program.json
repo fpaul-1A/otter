@@ -1,23 +1,23 @@
 [
   {
     "title": "Welcome to the Otter SDK tutorial",
-    "htmlContentUrl": "./steps/welcome/instructions.html"
+    "htmlContentUrl": "./steps/welcome/instructions.md"
   },
   {
     "title": "Introduction",
-    "htmlContentUrl": "./steps/introduction/instructions.html"
+    "htmlContentUrl": "./steps/introduction/instructions.md"
   },
   {
     "title": "How to use the Otter SDK?",
-    "htmlContentUrl": "./steps/typescript-sdk/instructions.html"
+    "htmlContentUrl": "./steps/typescript-sdk/instructions.md"
   },
   {
     "title": "Customize your fetch client with plugins",
-    "htmlContentUrl": "./steps/plugins/instructions.html"
+    "htmlContentUrl": "./steps/plugins/instructions.md"
   },
   {
     "title": "Integrate your SDK in Angular",
-    "htmlContentUrl": "./steps/angular-integration/instructions.html",
+    "htmlContentUrl": "./steps/angular-integration/instructions.md",
     "filesConfiguration": {
       "name": "angular-integration",
       "startingFile": "apps/tutorial-app/src/app/app.component.ts",
@@ -44,7 +44,7 @@
   },
   {
     "title": "Generate your first SDK - Command",
-    "htmlContentUrl": "./steps/sdk-generation/instructions.html",
+    "htmlContentUrl": "./steps/sdk-generation/instructions.md",
     "filesConfiguration": {
       "name": "generate-sdk",
       "startingFile": "src/api/dummy/dummy-api.ts",
@@ -58,7 +58,7 @@
   },
   {
     "title": "SDK with Dates - Generation",
-    "htmlContentUrl": "./steps/date-sdk-generation/instructions.html",
+    "htmlContentUrl": "./steps/date-sdk-generation/instructions.md",
     "filesConfiguration": {
       "name": "generate-date-sdk",
       "startingFile": "open-api.yaml",

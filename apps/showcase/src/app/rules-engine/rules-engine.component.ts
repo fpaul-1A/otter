@@ -26,9 +26,10 @@ import {
   Ruleset,
   UnaryOperator
 } from '@o3r/rules-engine';
+import { MarkdownModule } from 'ngx-markdown';
 import { firstValueFrom } from 'rxjs';
 import { RulesEnginePresComponent } from '../../components/showcase/rules-engine';
-import { CopyTextPresComponent, IN_PAGE_NAV_PRES_DIRECTIVES, InPageNavLink, InPageNavLinkDirective, InPageNavPresService } from '../../components/utilities';
+import { IN_PAGE_NAV_PRES_DIRECTIVES, InPageNavLink, InPageNavLinkDirective, InPageNavPresService } from '../../components/utilities';
 import { environment } from '../../environments/environment.development';
 import { TripFactsService } from '../../facts/index';
 import { duringSummer } from '../../operators/index';
@@ -37,31 +38,31 @@ import { duringSummer } from '../../operators/index';
 @Component({
   selector: 'o3r-rules-engine',
   standalone: true,
-  imports: [
-    RulesEnginePresComponent,
-    DynamicContentModule,
-    ConfigurationBaseServiceModule,
-    ConfigurationDevtoolsModule,
-    ApplicationDevtoolsModule,
-    ComponentsDevtoolsModule,
-    RulesEngineRunnerModule,
-    RulesEngineDevtoolsModule,
-    ConfigurationRulesEngineActionModule,
-    AssetRulesEngineActionModule,
-    LocalizationRulesEngineActionModule,
-    ConfigOverrideStoreModule,
-    AssetPathOverrideStoreModule,
-    LocalizationOverrideStoreModule,
-    CopyTextPresComponent,
-    RouterModule,
-    IN_PAGE_NAV_PRES_DIRECTIVES,
-    NgbNav,
-    NgbNavItem,
-    NgbNavLink,
-    NgbNavContent,
-    NgbNavOutlet,
-    AsyncPipe
-  ],
+    imports: [
+        RulesEnginePresComponent,
+        DynamicContentModule,
+        ConfigurationBaseServiceModule,
+        ConfigurationDevtoolsModule,
+        ApplicationDevtoolsModule,
+        ComponentsDevtoolsModule,
+        RulesEngineRunnerModule,
+        RulesEngineDevtoolsModule,
+        ConfigurationRulesEngineActionModule,
+        AssetRulesEngineActionModule,
+        LocalizationRulesEngineActionModule,
+        ConfigOverrideStoreModule,
+        AssetPathOverrideStoreModule,
+        LocalizationOverrideStoreModule,
+        RouterModule,
+        IN_PAGE_NAV_PRES_DIRECTIVES,
+        NgbNav,
+        NgbNavItem,
+        NgbNavLink,
+        NgbNavContent,
+        NgbNavOutlet,
+        AsyncPipe,
+        MarkdownModule
+    ],
   templateUrl: './rules-engine.template.html',
   styleUrls: ['./rules-engine.style.scss'],
   encapsulation: ViewEncapsulation.None,
