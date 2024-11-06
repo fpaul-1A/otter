@@ -19,6 +19,24 @@ module.exports = {
   },
   'overrides': [
     {
+      'files': ['*.ts'],
+      'rules': {
+        '@typescript-eslint/no-unused-vars': 'off',
+        '@typescript-eslint/naming-convention': 'off',
+        '@typescript-eslint/restrict-template-expressions': 'off',
+        'max-len': 'off',
+        'no-redeclare': 'off',
+        'no-use-before-define': 'off',
+        'no-useless-escape': 'off'
+      }
+    },
+    {
+      'files': ['*.jasmine.fixture.ts', '*api.fixture.ts'],
+      'rules': {
+        'jest/no-jasmine-globals': 'off'
+      }
+    },
+    {
       'files': ['*.helper.ts'],
       'rules': {
         '@typescript-eslint/explicit-function-return-type': 'error'

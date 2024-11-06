@@ -1,0 +1,36 @@
+{
+  "$schema": "../../../../../schemas/webcontainer-file-system-tree.schema.json",
+  "fileSystemTree": {
+    "apps": {
+      "directory": {
+        "tutorial-app": {
+          "directory": {
+            "src": {
+              "directory": {
+                "app": {
+                  "directory": {
+                    "app.component.html": {
+                      "file": {
+                        "contents": "Revived flight:\r\n<pre>{{flight() | json }}</pre>"
+                      }
+                    },
+                    "app.component.ts": {
+                      "file": {
+                        "contents": "import { Component, inject, signal } from '@angular/core';\nimport { JsonPipe } from '@angular/common';\nimport { RouterOutlet } from '@angular/router';\nimport { DummyApi, Flight } from 'sdk';\n\n@Component({\n  selector: 'app-root',\n  standalone: true,\n  imports: [JsonPipe, RouterOutlet],\n  templateUrl: './app.component.html',\n  styleUrl: './app.component.scss'\n})\nexport class AppComponent {\n  /** Title of the application */\n  public title = 'tutorial-app';\n\n  public readonly dummyApi = inject(DummyApi);\n\n  public readonly flight = signal<Flight | undefined>(undefined);\n\n  constructor() {\n    this.loadDummyData();\n  }\n\n  async loadDummyData() {\n    const dummyData = await this.dummyApi.dummyGet({});\n    this.flight.set(dummyData);\n  }\n}\n"
+                      }
+                    },
+                    "app.config.ts": {
+                      "file": {
+                        "contents": "import { ApiFetchClient } from '@ama-sdk/client-fetch';\nimport { MockInterceptRequest, SequentialMockAdapter } from '@ama-sdk/core';\nimport { ApplicationConfig, provideZoneChangeDetection, importProvidersFrom } from '@angular/core';\nimport { provideRouter } from '@angular/router';\nimport { ConsoleLogger, Logger, LOGGER_CLIENT_TOKEN, LoggerService } from '@o3r/logger';\nimport { DummyApi } from 'sdk';\nimport { OPERATION_ADAPTER } from 'sdk/spec';\nimport { routes } from './app.routes';\nimport { additionalModules } from '../environments/environment';\n\nfunction dummyApiFactory(logger: Logger) {\n  const apiConfig = new ApiFetchClient(\n    {\n      basePath: 'http://localhost:3000',\n      requestPlugins: [\n        new MockInterceptRequest({\n          adapter: new SequentialMockAdapter(\n            OPERATION_ADAPTER,\n            {\n              '/dummy_get': [{\n                mockData: {\n                  originLocationCode: 'PAR',\n                  destinationLocationCode: 'NYC'\n                }\n              }]\n            }\n          )\n        })\n      ],\n      fetchPlugins: [],\n      logger\n    }\n  );\n  return new DummyApi(apiConfig);\n}\n\nexport const appConfig: ApplicationConfig = {\n  providers: [\n    provideZoneChangeDetection({ eventCoalescing: true }),\n    provideRouter(routes),\n    importProvidersFrom(additionalModules),\n    {provide: LOGGER_CLIENT_TOKEN, useValue: new ConsoleLogger()},\n    {provide: DummyApi, useFactory: dummyApiFactory, deps: [LoggerService]}\n  ]\n};\n"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
