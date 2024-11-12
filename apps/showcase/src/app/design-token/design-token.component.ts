@@ -2,7 +2,8 @@ import { AsyncPipe } from '@angular/common';
 import { AfterViewInit, ChangeDetectionStrategy, Component, inject, QueryList, ViewChildren, ViewEncapsulation } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { O3rComponent } from '@o3r/core';
-import { CopyTextPresComponent, DesignTokenPresComponent, IN_PAGE_NAV_PRES_DIRECTIVES, InPageNavLink, InPageNavLinkDirective, InPageNavPresService } from '../../components';
+import { MarkdownModule, provideMarkdown } from 'ngx-markdown';
+import { DesignTokenPresComponent, IN_PAGE_NAV_PRES_DIRECTIVES, InPageNavLink, InPageNavLinkDirective, InPageNavPresService } from '../../components';
 
 @O3rComponent({ componentType: 'Page' })
 @Component({
@@ -10,11 +11,12 @@ import { CopyTextPresComponent, DesignTokenPresComponent, IN_PAGE_NAV_PRES_DIREC
   standalone: true,
   imports: [
     AsyncPipe,
-    CopyTextPresComponent,
     DesignTokenPresComponent,
     RouterLink,
-    IN_PAGE_NAV_PRES_DIRECTIVES
+    IN_PAGE_NAV_PRES_DIRECTIVES,
+    MarkdownModule
   ],
+  providers: [provideMarkdown()],
   templateUrl: './design-token.template.html',
   styleUrl: './design-token.style.scss',
   encapsulation: ViewEncapsulation.None,
