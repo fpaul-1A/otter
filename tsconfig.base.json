@@ -64,8 +64,14 @@
       "@o3r-training/showcase-sdk/fixtures": [
         "packages/@o3r-training/showcase-sdk/src/fixtures/jest"
       ],
+      "@o3r-training/showcase-sdk/spec": [
+        "packages/@o3r-training/showcase-sdk/src/spec"
+      ],
       "@o3r-training/training-sdk": [
         "packages/@o3r-training/training-sdk/src"
+      ],
+      "@o3r-training/training-sdk/spec": [
+        "packages/@o3r-training/training-sdk/src/spec"
       ],
       "@o3r-training/training-tools": [
         "packages/@o3r-training/training-tools/src/public_api"

@@ -7079,7 +7079,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@o3r-training/training-sdk@workspace:packages/@o3r-training/training-sdk":
+"@o3r-training/training-sdk@workspace:^, @o3r-training/training-sdk@workspace:packages/@o3r-training/training-sdk":
   version: 0.0.0-use.local
   resolution: "@o3r-training/training-sdk@workspace:packages/@o3r-training/training-sdk"
   dependencies:
@@ -8985,6 +8985,7 @@ __metadata:
     "@yarnpkg/sdks": "npm:^3.2.0"
     ag-grid-angular: "npm:~32.3.0"
     ag-grid-community: "npm:~32.3.0"
+    angular-split: "npm:^18.0.0"
     babel-loader: "npm:^9.0.0"
     bootstrap: "npm:5.3.3"
     bootstrap-icons: "npm:^1.11.3"
@@ -9888,6 +9889,7 @@ __metadata:
     "@nx/eslint-plugin": "npm:~19.5.0"
     "@nx/jest": "npm:~19.5.0"
     "@o3r-training/showcase-sdk": "workspace:^"
+    "@o3r-training/training-sdk": "workspace:^"
     "@o3r-training/training-tools": "workspace:^"
     "@o3r/application": "workspace:^"
     "@o3r/build-helpers": "workspace:^"
@@ -9903,6 +9905,7 @@ __metadata:
     "@o3r/routing": "workspace:^"
     "@o3r/rules-engine": "workspace:^"
     "@o3r/schematics": "workspace:^"
+    "@o3r/store-sync": "workspace:^"
     "@o3r/styling": "workspace:^"
     "@o3r/testing": "workspace:^"
     "@playwright/test": "npm:~1.48.0"
@@ -9922,6 +9925,7 @@ __metadata:
     "@xterm/xterm": "npm:^5.0.0"
     ag-grid-angular: "npm:~32.3.0"
     ag-grid-community: "npm:~32.3.0"
+    angular-split: "npm:^18.0.0"
     bootstrap: "npm:5.3.3"
     clipboard: "npm:^2.0.11"
     concurrently: "npm:^8.0.0"
@@ -9941,7 +9945,7 @@ __metadata:
     lighthouse: "npm:~12.2.0"
     marked: "npm:^12.0.0"
     minimist: "npm:^1.2.6"
-    monaco-editor: "npm:~0.52.0"
+    monaco-editor: "npm:~0.50.0"
     ngx-markdown: "npm:^18.1.0"
     ngx-monaco-editor-v2: "npm:^18.0.0"
     ngx-monaco-tree: "npm:^18.1.0"
@@ -15965,6 +15969,19 @@ __metadata:
     "@algolia/requester-node-http": "npm:4.24.0"
     "@algolia/transporter": "npm:4.24.0"
   checksum: 10/fba851fb719529754b450c3d366de72289351c864aea56aa1c167ff0e36d5b015dddae7d720fe649a00d6c91d94a2091fb27789e553eb79c8d28a885585ccc6f
+  languageName: node
+  linkType: hard
+
+"angular-split@npm:^18.0.0":
+  version: 18.0.0
+  resolution: "angular-split@npm:18.0.0"
+  dependencies:
+    tslib: "npm:^2.0.0"
+  peerDependencies:
+    "@angular/common": ">=18.0.0"
+    "@angular/core": ">=18.0.0"
+    rxjs: ">=7.0.0"
+  checksum: 10/acafe910ff0ecf416dbeaf02f7b7c0668320a86683905fe631d3031351a0950723c3336b150a64ca3ee7404ecf76244db5a9d4db7f1c0e58bdf0fca6cf46ac84
   languageName: node
   linkType: hard
 
@@ -27408,10 +27425,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"monaco-editor@npm:~0.52.0":
-  version: 0.52.0
-  resolution: "monaco-editor@npm:0.52.0"
-  checksum: 10/ec9a543b07e70bb3339c7e20f4f84aad045776057820daced36537efd8e50b8d9cd448988e68a4870bdc3db9c15ae3ae05201c8ed8e4ca8e87f74ee2fefb8cad
+"monaco-editor@npm:~0.50.0":
+  version: 0.50.0
+  resolution: "monaco-editor@npm:0.50.0"
+  checksum: 10/594f2a3812147c1ef41c4dba444c649c32af95c3eb09529049bb7a2cb38e1747facbae0a459a07140e77cf9d73df41f034399804f9123f9cfff45394321a3983
   languageName: node
   linkType: hard
 

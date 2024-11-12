@@ -3,15 +3,15 @@ import {
   Component,
   Input
 } from '@angular/core';
-import {MarkdownModule, provideMarkdown} from 'ngx-markdown';
+import {AngularSplitModule} from 'angular-split';
+import {MarkdownModule} from 'ngx-markdown';
 import {CodeEditorViewComponent, EditorMode, TrainingProject} from '../code-editor-view';
 
 @Component({
   selector: 'o3r-training-step-pres',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CodeEditorViewComponent, MarkdownModule],
-  providers: [provideMarkdown()],
+  imports: [AngularSplitModule, CodeEditorViewComponent, MarkdownModule],
   templateUrl: './training-step-pres.component.html',
   styleUrl: './training-step-pres.component.scss'
 })

@@ -1,11 +1,56 @@
 <p>
   There are certain cases in which you want to be able to extend your SDK models, and therefore ensure that revivers are generated.
 </p>
-<!--<p>-->
-<!--  Let's use the use case of the previous exercise. As mentioned, the reservation of a flight has a time limit for the payment (the order-->
-<!--  is cancelled after this time). In our specifications, we defined this property as a Date object, hence relative to the user's timezone.-->
-<!--</p>-->
 <p>
   Let's continue with the use case of the previous exercise. In order to keep track of the user's current booking, it would be useful to generate an ID.
-  To do this, we can create a new model which extends the previously generated <b><code>Flight</code></b> type.
+  To do this, we can create a new model which extends the previously generated <code>Flight</code> type.
+</p>
+<p>
+  Before beginning the exercise, we need to make sure that the existing API was generated with model extension in the previous steps.
+  To verify this, check out the configuration used to generate the API (either the command line or the file <code>openapitools.json</code>).
+  Ensure that the global property <code>allowModelExtension</code> has been set to <b>true</b>. This will guarantee that the revivers of the
+  base models are generated, which is essential for the following exercise.
+</p>
+
+<h3>Exercise</h3>
+<p>
+  Extensions of base models (located in the <b>base</b> folder) are created in the <b>core</b> folder.
+</p>
+<p>
+  First, create the type <code>FlightCoreIfy</code> which extends <code>Flight</code>, imported from the <b>base</b> folder.
+  You can do this using the template file <code>flight.ts</code>.
+</p>
+<p>
+  <i>
+    Note: The naming convention requires the core model to contain the suffix <code>CoreIfy</code>. You can find more information on core models in the
+    <a href="https://github.com/AmadeusITGroup/otter/blob/main/docs/api-sdk/SDK_MODELS_HIERARCHY.md" target="_blank">SDK models hierarchy documentation</a>.
+  </i>
+</p>
+<p>
+  Then, you can create the reviver for this new core model using the existing template file <code>flight.reviver.ts</code>. This reviver will extend the
+  reviver of the base <code>Flight</code> model, which should exist since we have ensured this during the prerequisites of the exercise.
+</p>
+<p>
+  Once the core model and its reviver are created, we can go back to the base model to update the exported models and revivers.
+  You can do so in the file <code>base/flight/index.ts</code> by following this template:
+</p>
+<pre class="w-100 bg-body-tertiary px-5 pre-whitespace">
+  <code>
+// in the models/base/my-model/index.ts
+import { MyModelCoreIfy, reviveMyModelFactory } from '../../core/my-model';
+import type { MyModel as BaseModel } from './my-model';
+import { reviveMyModel as baseReviver } from './my-model.reviver';
+
+export type MyModel = MyModelCoreIfy<BaseModel>;
+export const reviveMyModel = reviveMyModelFactory(baseReviver);
+export type { MyModel as BaseMyModel };
+  </code>
+</pre>
+<p>
+  <i>
+    <u>Hint:</u> <code>MyModel</code> should be replaced by <code>Flight</code> throughout these template files.
+  </i>
+</p>
+<p>
+  Don't forget to check out the solution of this exercise!
 </p>
