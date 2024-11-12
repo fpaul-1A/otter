@@ -2,8 +2,8 @@ import { AsyncPipe } from '@angular/common';
 import { AfterViewInit, ChangeDetectionStrategy, Component, inject, QueryList, ViewChildren, ViewEncapsulation } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { O3rComponent } from '@o3r/core';
+import { MarkdownModule, provideMarkdown } from 'ngx-markdown';
 import {
-  CopyTextPresComponent,
   IN_PAGE_NAV_PRES_DIRECTIVES,
   InPageNavLink,
   InPageNavLinkDirective,
@@ -16,12 +16,13 @@ import {
   selector: 'o3r-sdk',
   standalone: true,
   imports: [
-    CopyTextPresComponent,
     RouterLink,
     SdkPresComponent,
     IN_PAGE_NAV_PRES_DIRECTIVES,
-    AsyncPipe
+    AsyncPipe,
+    MarkdownModule
   ],
+  providers: [provideMarkdown()],
   templateUrl: './sdk.template.html',
   styleUrls: ['./sdk.style.scss'],
   encapsulation: ViewEncapsulation.None,
