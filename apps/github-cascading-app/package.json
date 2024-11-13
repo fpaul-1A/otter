@@ -23,9 +23,9 @@
   },
   "devDependencies": {
     "@actions/github": "^6.0.0",
-    "@angular-eslint/builder": "~18.3.0",
-    "@angular-eslint/eslint-plugin": "~18.3.0",
-    "@angular-eslint/eslint-plugin-template": "~18.3.0",
+    "@angular-eslint/builder": "~18.4.0",
+    "@angular-eslint/eslint-plugin": "~18.4.0",
+    "@angular-eslint/eslint-plugin-template": "~18.4.0",
     "@angular/animations": "~18.2.0",
     "@angular/common": "~18.2.0",
     "@angular/compiler": "~18.2.0",
@@ -33,10 +33,10 @@
     "@angular/core": "~18.2.0",
     "@angular/platform-browser": "~18.2.0",
     "@angular/platform-browser-dynamic": "~18.2.0",
-    "@nx/eslint": "~19.5.0",
-    "@nx/eslint-plugin": "~19.5.0",
-    "@nx/jest": "~19.5.0",
-    "@nx/js": "~19.5.0",
+    "@nx/eslint": "~19.8.0",
+    "@nx/eslint-plugin": "~19.8.0",
+    "@nx/jest": "~19.8.0",
+    "@nx/js": "~19.8.0",
     "@o3r/eslint-config-otter": "workspace:^",
     "@o3r/eslint-plugin": "workspace:^",
     "@stylistic/eslint-plugin-ts": "~2.4.0",
@@ -61,13 +61,13 @@
     "jest-junit": "~16.0.0",
     "jsonc-eslint-parser": "~2.4.0",
     "nock": "^13.0.5",
-    "nx": "~19.5.0",
+    "nx": "~19.8.0",
     "rxjs": "^7.8.1",
     "smee-client": "^2.0.0",
     "ts-jest": "~29.2.0",
     "tslib": "^2.6.2",
     "typescript": "~5.5.4",
-    "zone.js": "~0.14.2"
+    "zone.js": "~0.15.0"
   },
   "engines": {
     "node": "^18.19.1 || ^20.11.1 || >=22.0.0"
