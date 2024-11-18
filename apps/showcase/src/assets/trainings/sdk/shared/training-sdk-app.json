@@ -1,0 +1,33 @@
+{
+  "apps": {
+    "directory": {
+      "tutorial-app": {
+        "directory": {
+          "src": {
+            "directory": {
+              "app": {
+                "directory": {
+                  "app.component.html": {
+                    "file": {
+                      "contents": "Revived flight:\r\n<pre>{{flight() | json }}</pre>"
+                    }
+                  },
+                  "app.component.ts": {
+                    "file": {
+                      "contents": "import { Component, inject, signal } from '@angular/core';\nimport { JsonPipe } from '@angular/common';\nimport { RouterOutlet } from '@angular/router';\nimport { DummyApi, Flight } from 'sdk';\n\n@Component({\n  selector: 'app-root',\n  standalone: true,\n  imports: [JsonPipe, RouterOutlet],\n  templateUrl: './app.component.html',\n  styleUrl: './app.component.scss'\n})\nexport class AppComponent {\n  /** Title of the application */\n  public title = 'tutorial-app';\n\n  public readonly dummyApi = inject(DummyApi);\n\n  public readonly flight = signal<Flight | undefined>(undefined);\n\n  constructor() {\n    this.loadDummyData();\n  }\n\n  async loadDummyData() {\n    const dummyData = await this.dummyApi.dummyGet({});\n    this.flight.set(dummyData);\n  }\n}\n"
+                    }
+                  },
+                  "app.config.ts": {
+                    "file": {
+                      "contents": "import { ApiFetchClient } from '@ama-sdk/client-fetch';\nimport { MockInterceptRequest, SequentialMockAdapter } from '@ama-sdk/core';\nimport { ApplicationConfig, provideZoneChangeDetection, importProvidersFrom } from '@angular/core';\nimport { BrowserAnimationsModule } from '@angular/platform-browser/animations';\nimport { provideRouter } from '@angular/router';\nimport { prefersReducedMotion } from '@o3r/application';\nimport { Serializer } from '@o3r/core';\nimport { ConsoleLogger, Logger, LOGGER_CLIENT_TOKEN, LoggerService } from '@o3r/logger';\nimport { StorageSync } from '@o3r/store-sync';\nimport { EffectsModule } from '@ngrx/effects';\nimport { RuntimeChecks, StoreModule } from '@ngrx/store';\nimport { DummyApi } from 'sdk';\nimport { OPERATION_ADAPTER } from 'sdk/spec';\nimport { routes } from './app.routes';\nimport { environment, additionalModules } from '../environments/environment';\n\nconst localStorageStates: Record<string, Serializer<any>>[] = [/* Store to register in local storage */];\nconst storageSync = new StorageSync({\n  keys: localStorageStates, rehydrate: true\n});\n\nconst rootReducers = {\n  \n};\n\nconst metaReducers = [storageSync.localStorageSync()];\nconst runtimeChecks: Partial<RuntimeChecks> = {\n  strictActionImmutability: false,\n  strictActionSerializability: false,\n  strictActionTypeUniqueness: !environment.production,\n  strictActionWithinNgZone: !environment.production,\n  strictStateImmutability: !environment.production,\n  strictStateSerializability: false\n};\n\nfunction dummyApiFactory(logger: Logger) {\n  const apiConfig = new ApiFetchClient(\n    {\n      basePath: 'http://localhost:3000',\n      requestPlugins: [\n        new MockInterceptRequest({\n          adapter: new SequentialMockAdapter(\n            OPERATION_ADAPTER,\n            {\n              '/dummy_get': [{\n                mockData: {\n                  originLocationCode: 'PAR',\n                  destinationLocationCode: 'NYC'\n                }\n              }]\n            }\n          )\n        })\n      ],\n      fetchPlugins: [],\n      logger\n    }\n  );\n  return new DummyApi(apiConfig);\n}\n\nexport const appConfig: ApplicationConfig = {\n  providers: [\n    provideZoneChangeDetection({ eventCoalescing: true }),\n    provideRouter(routes),\n    importProvidersFrom(EffectsModule.forRoot([])),\n    importProvidersFrom(StoreModule.forRoot(rootReducers, {metaReducers, runtimeChecks})),\n    importProvidersFrom(additionalModules),\n    importProvidersFrom(BrowserAnimationsModule.withConfig({disableAnimations: prefersReducedMotion()})),\n    {provide: LOGGER_CLIENT_TOKEN, useValue: new ConsoleLogger()},\n    {provide: DummyApi, useFactory: dummyApiFactory, deps: [LoggerService]}\n  ]\n};\n"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

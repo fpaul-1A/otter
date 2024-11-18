@@ -1,7 +1,9 @@
-/* Replace MyModel with the name of your model */
-import type { MyModel } from '../../base/my-model/my-model';
-import type { IgnoreEnum } from '@ama-sdk/core';
+/* TODO create the type FlightCoreIfy which extends Flight, imported from the ../base folder */
+/*   Add an extra field `id: string` */
 
-export type MyModelCoreIfy<T extends IgnoreEnum<MyModel>> = T & {
-  /* Add your additional fields here */
+/**
+ * Extended type for Flight
+ */
+export type FlightCoreIfy =  {
+
 };
