@@ -28,7 +28,7 @@
         }
       ],
       "mode": "interactive",
-      "commands": ["npm ci --legacy-peer-deps --ignore-scripts", "npm run ng run sdk:build", "npm run ng run tutorial-app:serve"]
+      "commands": ["npm ci --legacy-peer-deps --ignore-scripts --no-audit", "npm run ng run sdk:build", "npm run ng run tutorial-app:serve"]
     }
   },
   {
@@ -89,7 +89,7 @@
       ],
       "mode": "interactive",
       "commands": [
-        "npm ci --legacy-peer-deps --ignore-scripts",
+        "npm ci --legacy-peer-deps --ignore-scripts --no-audit",
         "npm run ng run app:serve"
       ]
     }
@@ -104,6 +104,10 @@
         {
           "path": ".",
           "contentUrl": "./shared/monorepo-template.json"
+        },
+        {
+          "path": ".",
+          "contentUrl": "./shared/training-sdk-app.json"
         },
         {
           "path": "./libs/sdk/src",
@@ -122,7 +126,7 @@
       ],
       "mode": "interactive",
       "commands": [
-        "npm ci --legacy-peer-deps --ignore-scripts",
+        "npm ci --legacy-peer-deps --ignore-scripts --no-audit",
         "npm run ng run tutorial-app:serve"
       ]
     }
