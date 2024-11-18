@@ -5,7 +5,7 @@ import { IN_PAGE_NAV_PRES_DIRECTIVES, InPageNavPresComponent } from '../../compo
 import { AsyncPipe } from '@angular/common';
 import { ComponentReplacementPresComponent } from '../../components/showcase/component-replacement/component-replacement-pres.component';
 import { RouterModule } from '@angular/router';
-import { MarkdownModule, provideMarkdown } from 'ngx-markdown';
+import { MarkdownModule } from 'ngx-markdown';
 
 @O3rComponent({ componentType: 'Page' })
 @Component({
@@ -22,8 +22,7 @@ import { MarkdownModule, provideMarkdown } from 'ngx-markdown';
     IN_PAGE_NAV_PRES_DIRECTIVES,
     ComponentReplacementPresComponent,
     MarkdownModule
-  ],
-  providers: [provideMarkdown()]
+  ]
 })
 export class ComponentReplacementComponent implements AfterViewInit {
   private readonly inPageNavPresService = inject(InPageNavPresService);
