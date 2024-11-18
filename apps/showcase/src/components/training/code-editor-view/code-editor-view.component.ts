@@ -24,6 +24,7 @@ import {
   map,
   Observable,
   of,
+  share,
   skip,
   startWith,
   switchMap
@@ -107,7 +108,8 @@ export class CodeEditorViewComponent implements OnDestroy, OnChanges {
       cwd ? this.webContainerService.monacoTree$.pipe(
         map((tree) => tree.find((treeElement) => treeElement.name === cwd)?.content || [])
       ) : of([])
-    )
+    ),
+    share()
   );
   /**
    * Form with the selected file and its content which can be edited in the Monaco Editor
@@ -136,9 +138,9 @@ export class CodeEditorViewComponent implements OnDestroy, OnChanges {
 
   constructor() {
     this.form.controls.code.valueChanges.pipe(
+      debounceTime(300),
       distinctUntilChanged(),
       skip(1),
-      debounceTime(300),
       filter((text): text is string => !!text),
       takeUntilDestroyed()
     ).subscribe((text: string) => {
