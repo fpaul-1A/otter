@@ -26,7 +26,7 @@ import {
   Ruleset,
   UnaryOperator
 } from '@o3r/rules-engine';
-import { MarkdownModule, provideMarkdown } from 'ngx-markdown';
+import { MarkdownModule } from 'ngx-markdown';
 import { firstValueFrom } from 'rxjs';
 import { IN_PAGE_NAV_PRES_DIRECTIVES, InPageNavLink, InPageNavLinkDirective, InPageNavPresService, RulesEnginePresComponent } from '../../components/index';
 import { environment } from '../../environments/environment.development';
@@ -58,7 +58,6 @@ import { duringSummer } from '../../operators/index';
     AsyncPipe,
     MarkdownModule
   ],
-  providers: [provideMarkdown()],
   templateUrl: './rules-engine.template.html',
   styleUrls: ['./rules-engine.style.scss'],
   encapsulation: ViewEncapsulation.None,
