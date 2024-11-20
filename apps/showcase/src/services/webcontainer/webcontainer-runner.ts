@@ -1,6 +1,12 @@
-import { Injectable } from '@angular/core';
+import { DestroyRef, inject, Injectable } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { type FileSystemTree, type IFSWatcher, WebContainer, type WebContainerProcess } from '@webcontainer/api';
+import {
+  type FileSystemTree,
+  type IFSWatcher,
+  Unsubscribe,
+  WebContainer,
+  type WebContainerProcess
+} from '@webcontainer/api';
 import { Terminal } from '@xterm/xterm';
 import {
   BehaviorSubject,
@@ -44,9 +50,11 @@ export class WebContainerRunner {
   private watcher: IFSWatcher | null = null;
 
   constructor() {
+    const destroyRef = inject(DestroyRef);
     this.instancePromise = WebContainer.boot().then((instance) => {
       // eslint-disable-next-line no-console
-      instance.on('error', console.error);
+      const unsubscribe = instance.on('error', console.error);
+      destroyRef.onDestroy(() => unsubscribe());
       return instance;
     });
     this.commandOnRun$.pipe(
@@ -58,17 +66,26 @@ export class WebContainerRunner {
       void this.runCommand(commandElements[0], commandElements.slice(1), cwd);
     });
 
+    let serverReadyUnsubscribe: Unsubscribe | undefined;
     this.iframe.pipe(
       filter((iframe): iframe is HTMLIFrameElement => !!iframe),
       distinctUntilChanged(),
       withLatestFrom(this.instancePromise),
       takeUntilDestroyed()
-    ).subscribe(([iframe, instance]) =>
-      instance.on('server-ready', (_port: number, url: string) => {
+    ).subscribe(([iframe, instance]) => {
+      if (serverReadyUnsubscribe) {
+        serverReadyUnsubscribe();
+      }
+      serverReadyUnsubscribe = instance.on('server-ready', (_port: number, url: string) => {
         iframe.removeAttribute('srcdoc');
         iframe.src = url;
-      })
-    );
+      });
+    });
+    destroyRef.onDestroy(() => {
+      if (serverReadyUnsubscribe) {
+        serverReadyUnsubscribe();
+      }
+    })
 
     this.commandOutput.process.pipe(
       filter((process): process is WebContainerProcess => !!process && !process.output.locked),
