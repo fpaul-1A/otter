@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ComponentReplacementComponent } from './component-replacement.component';
 import { RouterModule } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
+import { provideMarkdown } from 'ngx-markdown';
 import { ComponentReplacementPresComponent } from '../../components/showcase/component-replacement/component-replacement-pres.component';
 
 describe('ComponentReplacementComponent', () => {
@@ -13,7 +14,8 @@ describe('ComponentReplacementComponent', () => {
     await TestBed.configureTestingModule({
       imports: [ComponentReplacementComponent,
         RouterModule.forRoot([]),
-        AsyncPipe]
+        AsyncPipe],
+      providers: [provideMarkdown()]
     }).overrideComponent(ComponentReplacementComponent, {
       remove: { imports: [ComponentReplacementPresComponent] }
     }).compileComponents();

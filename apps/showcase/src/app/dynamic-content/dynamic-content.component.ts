@@ -3,7 +3,7 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, inject, QueryList, V
 import { RouterModule } from '@angular/router';
 import { O3rComponent } from '@o3r/core';
 import { DynamicContentModule } from '@o3r/dynamic-content';
-import { MarkdownModule, provideMarkdown } from 'ngx-markdown';
+import { MarkdownModule } from 'ngx-markdown';
 import { DynamicContentPresComponent, IN_PAGE_NAV_PRES_DIRECTIVES, InPageNavLink, InPageNavLinkDirective, InPageNavPresService } from '../../components/index';
 
 @O3rComponent({ componentType: 'Page' })
@@ -18,7 +18,6 @@ import { DynamicContentPresComponent, IN_PAGE_NAV_PRES_DIRECTIVES, InPageNavLink
     AsyncPipe,
     MarkdownModule
   ],
-  providers: [provideMarkdown()],
   templateUrl: './dynamic-content.template.html',
   styleUrls: ['./dynamic-content.style.scss'],
   encapsulation: ViewEncapsulation.None,
