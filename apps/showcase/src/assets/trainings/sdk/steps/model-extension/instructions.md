@@ -1,9 +1,9 @@
-### Objective
+### <span class="fa-bullseye-arrow"></span> Objective
 Let's continue with the use case of the previous exercise.\
 In order to keep track of the user's current booking, it would be useful to generate an ID.\
 To do this, we are going to create a new model which extends the previously generated `Flight` type.
 
-### Exercise
+### <span class="fa-dumbbell"></span> Exercise
 
 #### Check out the base model
 Before proceeding with the extension of the model, let's take a moment to review what is in the base model.

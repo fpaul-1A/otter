@@ -2,7 +2,7 @@ import { AsyncPipe } from '@angular/common';
 import { AfterViewInit, ChangeDetectionStrategy, Component, inject, QueryList, ViewChildren, ViewEncapsulation } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { O3rComponent } from '@o3r/core';
-import { MarkdownModule, provideMarkdown } from 'ngx-markdown';
+import { MarkdownModule } from 'ngx-markdown';
 import {
   IN_PAGE_NAV_PRES_DIRECTIVES,
   InPageNavLink,
@@ -22,7 +22,6 @@ import {
     AsyncPipe,
     MarkdownModule
   ],
-  providers: [provideMarkdown()],
   templateUrl: './sdk.template.html',
   styleUrls: ['./sdk.style.scss'],
   encapsulation: ViewEncapsulation.None,
