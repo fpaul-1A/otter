@@ -11,5 +11,6 @@ generated-doc/
 /.pnp.js
 /.vscode
 /tools/github-actions/*/packaged-action/**
+/tools/@o3r/nx-helpers/**
 /**/src/**/package.json
 !/.yarnrc.yml

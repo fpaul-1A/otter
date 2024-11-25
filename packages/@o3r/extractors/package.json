@@ -104,6 +104,7 @@
     "@o3r/core": "workspace:^",
     "@o3r/eslint-config-otter": "workspace:^",
     "@o3r/eslint-plugin": "workspace:^",
+    "@o3r/nx-helpers": "workspace:^",
     "@o3r/schematics": "workspace:^",
     "@o3r/telemetry": "workspace:^",
     "@o3r/test-helpers": "workspace:^",
