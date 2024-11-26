@@ -1,6 +1,11 @@
 import { DestroyRef, inject, Injectable, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { type FileSystemTree, type IFSWatcher, WebContainer, type WebContainerProcess } from '@webcontainer/api';
+import {
+  type FileSystemTree,
+  type IFSWatcher,
+  WebContainer,
+  type WebContainerProcess
+} from '@webcontainer/api';
 import { Terminal } from '@xterm/xterm';
 import {
   BehaviorSubject,
