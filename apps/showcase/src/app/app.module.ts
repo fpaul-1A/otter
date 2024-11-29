@@ -26,7 +26,6 @@ import {
 import { ConsoleLogger, Logger, LOGGER_CLIENT_TOKEN, LoggerService } from '@o3r/logger';
 import { OTTER_RULES_ENGINE_DEVTOOLS_OPTIONS, RulesEngineRunnerModule } from '@o3r/rules-engine';
 import { OTTER_STYLING_DEVTOOLS_OPTIONS, StylingDevtoolsModule } from '@o3r/styling';
-import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { CLIPBOARD_OPTIONS, provideMarkdown } from 'ngx-markdown';
 import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 import { ClipboardButtonPresComponent, DatePickerHebrewInputPresComponent, ScrollBackTopPresComponent, SidenavPresComponent } from '../components/utilities';
@@ -116,19 +115,6 @@ export function registerCustomComponents(): Map<string, any> {
   ],
   providers: [
     {provide: MESSAGE_FORMAT_CONFIG, useValue: {}},
-    {
-      provide: HIGHLIGHT_OPTIONS,
-      useValue: {
-        coreLibraryLoader: () => import('highlight.js/lib/core'),
-        languages: {
-          bash: () => import('highlight.js/lib/languages/bash'),
-          css: () => import('highlight.js/lib/languages/css'),
-          json: () => import('highlight.js/lib/languages/json'),
-          typescript: () => import('highlight.js/lib/languages/typescript'),
-          xml: () => import('highlight.js/lib/languages/xml')
-        }
-      }
-    },
     {provide: LOGGER_CLIENT_TOKEN, useValue: new ConsoleLogger()},
     {provide: PetApi, useFactory: petApiFactory, deps: [LoggerService]},
     {provide: OTTER_CONFIGURATION_DEVTOOLS_OPTIONS, useValue: {isActivatedOnBootstrap: true}},

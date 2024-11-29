@@ -3,7 +3,8 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, computed, inject, Qu
 import { RouterModule } from '@angular/router';
 import { ConfigurationBaseServiceModule } from '@o3r/configuration';
 import { O3rComponent } from '@o3r/core';
-import { ConfigurationPresComponent, CopyTextPresComponent, IN_PAGE_NAV_PRES_DIRECTIVES, InPageNavLink, InPageNavLinkDirective, InPageNavPresService } from '../../components/index';
+import { MarkdownModule } from 'ngx-markdown';
+import { ConfigurationPresComponent, IN_PAGE_NAV_PRES_DIRECTIVES, InPageNavLink, InPageNavLinkDirective, InPageNavPresService } from '../../components/index';
 import { ConfigurationPresConfig } from '../../components/showcase/configuration/configuration-pres.config';
 
 const CONFIG_OVERRIDE: ConfigurationPresConfig = {
@@ -24,9 +25,9 @@ const CONFIG_OVERRIDE: ConfigurationPresConfig = {
     RouterModule,
     ConfigurationPresComponent,
     ConfigurationBaseServiceModule,
-    CopyTextPresComponent,
     IN_PAGE_NAV_PRES_DIRECTIVES,
-    AsyncPipe
+    AsyncPipe,
+    MarkdownModule
   ],
   templateUrl: './configuration.template.html',
   styleUrls: ['./configuration.style.scss'],
