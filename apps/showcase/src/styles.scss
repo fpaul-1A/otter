@@ -41,8 +41,8 @@ h1, h2 {
   color: #1f7e36;
 }
 
-.markdown-clipboard-toolbar button {
-  --df-btn-icononly-size: 1.85em;
+[clipboard] pre[class*=language-]>code[class*=language-] {
+  padding-right: 2.5em;
 }
 
 // Start overrides of design factory
