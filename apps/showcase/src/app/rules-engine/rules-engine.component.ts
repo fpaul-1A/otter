@@ -62,13 +62,15 @@ import {
   UnaryOperator,
 } from '@o3r/rules-engine';
 import {
+  MarkdownModule,
+} from 'ngx-markdown';
+import {
   firstValueFrom,
 } from 'rxjs';
 import {
   RulesEnginePresComponent,
 } from '../../components/showcase/rules-engine/index';
 import {
-  CopyTextPresComponent,
   IN_PAGE_NAV_PRES_DIRECTIVES,
   InPageNavLink,
   InPageNavLinkDirective,
@@ -103,11 +105,11 @@ import {
     ConfigOverrideStoreModule,
     AssetPathOverrideStoreModule,
     LocalizationOverrideStoreModule,
-    CopyTextPresComponent,
     RouterModule,
     IN_PAGE_NAV_PRES_DIRECTIVES,
     NgbNavModule,
-    AsyncPipe
+    AsyncPipe,
+    MarkdownModule
   ],
   templateUrl: './rules-engine.template.html',
   styleUrls: ['./rules-engine.style.scss'],
