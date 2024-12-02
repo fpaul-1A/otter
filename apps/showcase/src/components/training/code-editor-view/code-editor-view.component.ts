@@ -270,10 +270,7 @@ export class CodeEditorViewComponent implements OnDestroy, OnChanges {
         ],
         paths: {
           sdk: [
-            'libs/sdk/src/index'
-          ],
-          'sdk/*': [
-            'libs/sdk/src/*'
+            'file:///libs/sdk/src/index'
           ]
         }
       });
