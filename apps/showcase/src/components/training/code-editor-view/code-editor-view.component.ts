@@ -1,10 +1,10 @@
 import {
   AsyncPipe,
-  JsonPipe,
 } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  computed,
   ElementRef,
   inject,
   Input,
@@ -16,6 +16,7 @@ import {
 } from '@angular/core';
 import {
   takeUntilDestroyed,
+  toSignal,
 } from '@angular/core/rxjs-interop';
 import {
   FormBuilder,
@@ -33,6 +34,7 @@ import {
 import {
   AngularSplitModule,
 } from 'angular-split';
+import type * as Monaco from 'monaco-editor';
 import {
   MonacoEditorModule,
 } from 'ngx-monaco-editor-v2';
@@ -46,6 +48,7 @@ import {
   debounceTime,
   distinctUntilChanged,
   filter,
+  firstValueFrom,
   from,
   map,
   Observable,
@@ -53,17 +56,25 @@ import {
   share,
   skip,
   startWith,
+  Subject,
   switchMap,
 } from 'rxjs';
 import {
   checkIfPathInMonacoTree,
 } from '../../../helpers/monaco-tree.helper';
 import {
+  flattenTree,
   WebContainerService,
 } from '../../../services';
 import {
   CodeEditorControlComponent,
 } from '../code-editor-control';
+
+declare global {
+  interface Window {
+    monaco: typeof Monaco;
+  }
+}
 
 /** ngx-monaco-editor options language - determined based on file extension */
 const editorOptionsLanguage: Record<string, string> = {
@@ -96,7 +107,6 @@ export interface TrainingProject {
     AsyncPipe,
     CodeEditorControlComponent,
     FormsModule,
-    JsonPipe,
     MonacoEditorModule,
     NgxMonacoTreeComponent,
     ReactiveFormsModule,
@@ -182,6 +192,35 @@ export class CodeEditorViewComponent implements OnDestroy, OnChanges {
     }))
   );
 
+  public monacoReady = new Subject<void>();
+  public monacoPromise = firstValueFrom(this.monacoReady.pipe(
+    map(() => window.monaco)
+  ));
+
+  private readonly fileContentLoaded$ = this.form.controls.file.valueChanges.pipe(
+    combineLatestWith(this.cwdTree$),
+    filter(([path, monacoTree]) => !!path && checkIfPathInMonacoTree(monacoTree, path.split('/'))),
+    switchMap(([path]) => from(this.webContainerService.readFile(`${this.project!.cwd}/${path}`).catch(() => ''))),
+    takeUntilDestroyed(),
+    share()
+  );
+
+  private readonly fileContent = toSignal(this.fileContentLoaded$);
+  public model = computed(() => {
+    const value = this.fileContent();
+    const monaco = window.monaco;
+    if (!monaco) {
+      return undefined;
+    }
+    const uri = monaco.Uri.from({ scheme: '', path: this.form.controls.file.value! });
+    const language = editorOptionsLanguage[this.form.controls.file.value!.split('.').at(-1) || ''] || '';
+    return {
+      value,
+      language,
+      uri
+    };
+  });
+
   constructor() {
     this.form.controls.code.valueChanges.pipe(
       distinctUntilChanged(),
@@ -198,12 +237,56 @@ export class CodeEditorViewComponent implements OnDestroy, OnChanges {
       this.loggerService.log('Writing file', path);
       void this.webContainerService.writeFile(path, text);
     });
-    this.form.controls.file.valueChanges.pipe(
-      combineLatestWith(this.cwdTree$),
-      filter(([path, monacoTree]) => !!path && checkIfPathInMonacoTree(monacoTree, path.split('/'))),
-      switchMap(([path]) => from(this.webContainerService.readFile(`${this.project!.cwd}/${path}`).catch(() => ''))),
-      takeUntilDestroyed()
-    ).subscribe((content) => this.form.controls.code.setValue(content));
+    this.fileContentLoaded$.subscribe((content) => this.form.controls.code.setValue(content));
+
+    void this.monacoPromise.then((monaco) => {
+      monaco.editor.registerEditorOpener({
+        openCodeEditor: (_source: Monaco.editor.ICodeEditor, resource: Monaco.Uri, selectionOrPosition?: Monaco.IRange | Monaco.IPosition) => {
+          if (resource) {
+            const filePath = resource.path.slice(1);
+            this.form.controls.file.setValue(filePath);
+            if (selectionOrPosition) {
+              // TODO find a way to execute that after the new file is loaded
+              if (monaco.Position.isIPosition(selectionOrPosition)) {
+                monaco.editor.getEditors()[0].revealPosition(selectionOrPosition);
+              } else {
+                monaco.editor.getEditors()[0].revealRange(selectionOrPosition);
+              }
+            }
+            return true;
+          }
+          return false;
+        }
+      });
+      monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
+        allowNonTsExtensions: true,
+        skipLibCheck: true,
+        target: 99,
+        module: 99,
+        moduleResolution: 2,
+        lib: [
+          'es2022',
+          'dom'
+        ],
+        paths: {
+          sdk: [
+            'libs/sdk/src/index'
+          ],
+          'sdk/*': [
+            'libs/sdk/src/*'
+          ]
+        }
+      });
+    });
+  }
+
+  private async updateAllProject() {
+    const monaco = await this.monacoPromise;
+    const flatFiles = flattenTree(this.project?.files!);
+    flatFiles.forEach(({ filePath, content }) => {
+      const language = editorOptionsLanguage[filePath.split('.').at(-1) || ''] || '';
+      monaco.editor.createModel(content, language, monaco.Uri.from({ scheme: '', path: filePath }));
+    });
   }
 
   /**
@@ -228,13 +311,16 @@ export class CodeEditorViewComponent implements OnDestroy, OnChanges {
         // Remove link between launch project and terminals
         void this.webContainerService.loadProject(this.project.files, this.project.commands, this.project.cwd);
       }
-
-      if (this.project?.startingFile) {
-        this.form.controls.file.setValue(this.project.startingFile);
-      } else {
-        this.form.controls.file.setValue('');
-        this.form.controls.code.setValue('');
-      }
+      void this.monacoPromise.then(async (monaco) => {
+        monaco.editor.getModels().forEach((m) => m.dispose());
+        await this.updateAllProject();
+        if (this.project?.startingFile) {
+          this.form.controls.file.setValue(this.project.startingFile);
+        } else {
+          this.form.controls.file.setValue('');
+          this.form.controls.code.setValue('');
+        }
+      });
       this.cwd$.next(this.project?.cwd || '');
     }
   }
