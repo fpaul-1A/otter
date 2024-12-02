@@ -126,4 +126,31 @@ export class WebContainerService {
 
     return getFilesTreeFromContainer(instance, EXCLUDED_FILES_OR_DIRECTORY);
   }
+
+  /**
+   * This does stuff
+   * @param project
+   * @param maxDepth
+   * @param path
+   */
+  public async getDeclarationTypes(project: string, maxDepth = 3, path = 'node_modules'): Promise<{ filePath: string; content: string }[]> {
+    // TODO read that from project devDependencies?
+    const dependenciesWhitelist = /@ama-sdk|@angular|@o3r|rxjs/;
+    const instance = await this.runner.instancePromise;
+    const basePath = `${project}/${path}`;
+    const dependencies = await instance.fs.readdir(basePath, { encoding: 'utf8', withFileTypes: true });
+    return (await Promise.all(dependencies.map(async (dirEntry) => {
+      if (dirEntry.isDirectory() && (dependenciesWhitelist.test(dirEntry.name) || dependenciesWhitelist.test(path))) {
+        const files = await instance.fs.readdir(`${basePath}/${dirEntry.name}`, { encoding: 'utf8', withFileTypes: true });
+        const indexFile = files.find((entry) => entry.isFile() && entry.name === 'index.d.ts');
+        if (indexFile) {
+          return [{
+            filePath: `file:///${path}/${dirEntry.name}/index.d.ts`,
+            content: await instance.fs.readFile(`${basePath}/${dirEntry.name}/${indexFile.name}`, 'utf8')
+          }];
+        }
+        return maxDepth > 1 ? await this.getDeclarationTypes(project, maxDepth - 1, `${path}/${dirEntry.name}`) : [];
+      }
+    }))).flat().filter((entry) => !!entry);
+  }
 }
