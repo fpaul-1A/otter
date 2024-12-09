@@ -9340,7 +9340,7 @@ __metadata:
     ngx-highlightjs: "npm:^12.0.0"
     ngx-markdown: "npm:^18.1.0"
     ngx-monaco-editor-v2: "npm:^18.0.0"
-    ngx-monaco-tree: "npm:^18.1.0"
+    ngx-monaco-tree: "npm:^18.3.0"
     npm-run-all2: "npm:^6.0.0"
     nx: "npm:~19.5.0"
     nx-cloud: "npm:^19.1.0"
@@ -10321,7 +10321,7 @@ __metadata:
     ngx-highlightjs: "npm:^12.0.0"
     ngx-markdown: "npm:^18.1.0"
     ngx-monaco-editor-v2: "npm:^18.0.0"
-    ngx-monaco-tree: "npm:^18.1.0"
+    ngx-monaco-tree: "npm:^18.3.0"
     pixelmatch: "npm:^5.2.1"
     playwright-lighthouse: "npm:~4.0.0"
     pngjs: "npm:^7.0.0"
@@ -28999,9 +28999,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ngx-monaco-tree@npm:^18.1.0":
-  version: 18.2.0
-  resolution: "ngx-monaco-tree@npm:18.2.0"
+"ngx-monaco-tree@npm:^18.3.0":
+  version: 18.3.0
+  resolution: "ngx-monaco-tree@npm:18.3.0"
   dependencies:
     tslib: "npm:^2.7.0"
   peerDependencies:
@@ -29009,7 +29009,7 @@ __metadata:
     "@angular/common": ^18.2.2
     "@angular/core": ^18.2.2
     "@vscode/codicons": ^0.0.32
-  checksum: 10/87044e525ebbb39612a23642dd1d7ece8b46f338e0d3467edcc429a0b26ae4ac06b6a28393443be48b0380b290e99ab6ef6655ca69c8e65bd33728c70a2724cf
+  checksum: 10/ee369bc9b313ab6cafa12c58d9502dbeb4f33df61cc2c09e5e59dfec0e87c766889ed329f01566731d84fc8fc4193c74e6b4e8b6b331ce5fff1505b531ca2154
   languageName: node
   linkType: hard
 

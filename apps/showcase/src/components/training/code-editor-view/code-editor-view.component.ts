@@ -5,12 +5,12 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  effect,
   ElementRef,
   inject,
-  Input,
-  OnChanges,
+  input,
   OnDestroy,
-  SimpleChanges,
+  untracked,
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
@@ -119,7 +119,7 @@ export interface TrainingProject {
   templateUrl: './code-editor-view.component.html',
   styleUrl: './code-editor-view.component.scss'
 })
-export class CodeEditorViewComponent implements OnDestroy, OnChanges {
+export class CodeEditorViewComponent implements OnDestroy {
   /**
    * @see {FormBuilder}
    */
@@ -142,13 +142,13 @@ export class CodeEditorViewComponent implements OnDestroy, OnChanges {
   /**
    * Allow to edit the code in the monaco editor
    */
-  @Input() public editorMode: EditorMode = 'readonly';
+  public editorMode = input<EditorMode>('readonly');
   /**
    * Project to load in the code editor.
    * It should describe the files to load, the starting file, the folder dedicated to the project as well as the
    * commands to initialize the project
    */
-  @Input() public project?: TrainingProject;
+  public project = input.required<TrainingProject>();
   /**
    * Service to load files and run commands in the application instance of the webcontainer.
    */
@@ -177,9 +177,9 @@ export class CodeEditorViewComponent implements OnDestroy, OnChanges {
     code: FormControl<string | null>;
     file: FormControl<string | null>;
   }> = this.formBuilder.group({
-    code: '',
-    file: ''
-  });
+      code: '',
+      file: ''
+    });
 
   /**
    * Subject used to notify when monaco editor has been initialized
@@ -201,7 +201,7 @@ export class CodeEditorViewComponent implements OnDestroy, OnChanges {
     filter((filePath): filePath is string => !!filePath),
     map(() => ({
       theme: 'vs-dark',
-      readOnly: (this.editorMode === 'readonly'),
+      readOnly: (this.editorMode() === 'readonly'),
       automaticLayout: true,
       scrollBeyondLastLine: false,
       overflowWidgetsDomNode: this.monacoOverflowWidgets.nativeElement,
@@ -213,7 +213,7 @@ export class CodeEditorViewComponent implements OnDestroy, OnChanges {
     takeUntilDestroyed(),
     combineLatestWith(this.cwdTree$),
     filter(([path, monacoTree]) => !!path && checkIfPathInMonacoTree(monacoTree, path.split('/'))),
-    switchMap(([path]) => from(this.webContainerService.readFile(`${this.project!.cwd}/${path}`).catch(() => ''))),
+    switchMap(([path]) => from(this.webContainerService.readFile(`${this.project().cwd}/${path}`).catch(() => ''))),
     share()
   );
 
@@ -235,6 +235,17 @@ export class CodeEditorViewComponent implements OnDestroy, OnChanges {
   });
 
   constructor() {
+    effect(async () => {
+      const project = this.project();
+      await untracked(async () => {
+        if (project.files) {
+          // Remove link between launch project and terminals
+          await this.webContainerService.loadProject(project.files, project.commands, project.cwd);
+        }
+        await this.loadNewProject();
+        this.cwd$.next(project?.cwd || '');
+      });
+    });
     this.form.controls.code.valueChanges.pipe(
       distinctUntilChanged(),
       skip(1),
@@ -246,7 +257,7 @@ export class CodeEditorViewComponent implements OnDestroy, OnChanges {
         this.loggerService.error('No project found');
         return;
       }
-      const path = `${this.project.cwd}/${this.form.controls.file.value}`;
+      const path = `${this.project().cwd}/${this.form.controls.file.value}`;
       this.loggerService.log('Writing file', path);
       void this.webContainerService.writeFile(path, text);
     });
@@ -268,10 +279,10 @@ export class CodeEditorViewComponent implements OnDestroy, OnChanges {
     void this.monacoPromise.then((monaco) => {
       monaco.editor.registerEditorOpener({
         openCodeEditor: (_source: Monaco.editor.ICodeEditor, resource: Monaco.Uri, selectionOrPosition?: Monaco.IRange | Monaco.IPosition) => {
-          if (resource && this.project?.files) {
+          if (resource && this.project().files) {
             const filePath = resource.path.slice(1);
             // TODO write a proper function to search in the tree
-            const flatFiles = flattenTree(this.project.files);
+            const flatFiles = flattenTree(this.project().files);
             if (flatFiles.some((projectFile) => projectFile.filePath === resource.path)) {
               this.form.controls.file.setValue(filePath);
               if (selectionOrPosition) {
@@ -318,7 +329,7 @@ export class CodeEditorViewComponent implements OnDestroy, OnChanges {
    */
   private async loadAllProjectFilesToMonaco() {
     const monaco = await this.monacoPromise;
-    const flatFiles = flattenTree(this.project?.files!);
+    const flatFiles = flattenTree(this.project().files);
     flatFiles.forEach(({ filePath, content }) => {
       const language = editorOptionsLanguage[filePath.split('.').at(-1) || ''] || '';
       monaco.editor.createModel(content, language, monaco.Uri.from({ scheme: 'file', path: filePath }));
@@ -333,23 +344,23 @@ export class CodeEditorViewComponent implements OnDestroy, OnChanges {
    * Load a new project in global monaco editor and update local form accordingly
    */
   private async loadNewProject() {
-    await this.cleanAllModelsFromMonaco();
-    await this.loadAllProjectFilesToMonaco();
-    if (this.project?.startingFile) {
-      this.form.controls.file.setValue(this.project.startingFile);
+    if (this.project()?.startingFile) {
+      this.form.controls.file.setValue(this.project().startingFile);
     } else {
       this.form.controls.file.setValue('');
       this.form.controls.code.setValue('');
     }
+    await this.cleanAllModelsFromMonaco();
+    await this.loadAllProjectFilesToMonaco();
   }
 
   /**
    * Reload declaration types from web-container
    */
   public async reloadDeclarationTypes() {
-    if (this.project?.cwd) {
+    if (this.project().cwd) {
       const declarationTypes = [
-        ...await this.webContainerService.getDeclarationTypes(this.project.cwd),
+        ...await this.webContainerService.getDeclarationTypes(this.project().cwd),
         { filePath: 'file:///node_modules/@ama-sdk/core/index.d.ts', content: 'export * from "./src/public_api.d.ts";' },
         { filePath: 'file:///node_modules/@ama-sdk/client-fetch/index.d.ts', content: 'export * from "./src/public_api.d.ts";' }
       ];
@@ -370,26 +381,9 @@ export class CodeEditorViewComponent implements OnDestroy, OnChanges {
    * @inheritDoc
    */
   public async onClickFile(filePath: string) {
-    if (!this.project) {
-      return;
-    }
-    const path = `${this.project.cwd}/${filePath}`;
-    if (this.project && await this.webContainerService.isFile(path)) {
+    const path = `${this.project().cwd}/${filePath}`;
+    if (await this.webContainerService.isFile(path)) {
       this.form.controls.file.setValue(filePath);
-    }
-  }
-
-  /**
-   * @inheritDoc
-   */
-  public ngOnChanges(changes: SimpleChanges) {
-    if ('project' in changes) {
-      if (this.project?.files) {
-        // Remove link between launch project and terminals
-        void this.webContainerService.loadProject(this.project.files, this.project.commands, this.project.cwd);
-      }
-      void this.loadNewProject();
-      this.cwd$.next(this.project?.cwd || '');
     }
   }
 
