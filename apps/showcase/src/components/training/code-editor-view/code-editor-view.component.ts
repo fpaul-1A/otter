@@ -6,12 +6,10 @@ import {
   Component,
   computed,
   effect,
-  ElementRef,
   inject,
   input,
   OnDestroy,
   untracked,
-  ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
 import {
@@ -25,6 +23,9 @@ import {
   FormsModule,
   ReactiveFormsModule,
 } from '@angular/forms';
+import {
+  DfModalService,
+} from '@design-factory/design-factory';
 import {
   LoggerService,
 } from '@o3r/logger';
@@ -44,6 +45,7 @@ import {
 } from 'ngx-monaco-tree';
 import {
   BehaviorSubject,
+  combineLatest,
   combineLatestWith,
   debounceTime,
   distinctUntilChanged,
@@ -51,9 +53,11 @@ import {
   firstValueFrom,
   from,
   map,
+  merge,
   Observable,
   of,
   share,
+  shareReplay,
   skip,
   startWith,
   Subject,
@@ -69,6 +73,9 @@ import {
 import {
   CodeEditorControlComponent,
 } from '../code-editor-control';
+import {
+  SaveCodeDialogComponent,
+} from '../save-code-dialog';
 
 declare global {
   interface Window {
@@ -134,9 +141,6 @@ export class CodeEditorViewComponent implements OnDestroy {
    */
   private readonly loggerService = inject(LoggerService);
 
-  @ViewChild('monacoOverflowWidgets')
-  private readonly monacoOverflowWidgets!: ElementRef;
-
   /**
    * Allow to edit the code in the monaco editor
    */
@@ -163,7 +167,7 @@ export class CodeEditorViewComponent implements OnDestroy {
         : of([])
     ),
     filter((tree) => tree.length > 0),
-    share()
+    shareReplay({ bufferSize: 1, refCount: true })
   );
 
   /**
@@ -200,16 +204,23 @@ export class CodeEditorViewComponent implements OnDestroy {
       readOnly: (this.editorMode() === 'readonly'),
       automaticLayout: true,
       scrollBeyondLastLine: false,
-      overflowWidgetsDomNode: this.monacoOverflowWidgets.nativeElement,
+      fixedOverflowWidgets: true,
       model: this.model()
     }))
   );
 
-  private readonly fileContentLoaded$ = this.form.controls.file.valueChanges.pipe(
+  private readonly modalService = inject(DfModalService);
+  private readonly forceReload = new Subject<void>();
+  private readonly forceSave = new Subject<void>();
+
+  private readonly fileContentLoaded$ = combineLatest([
+    this.form.controls.file.valueChanges,
+    this.forceReload.pipe(startWith(undefined))
+  ]).pipe(
     takeUntilDestroyed(),
     combineLatestWith(this.cwdTree$),
-    filter(([path, monacoTree]) => !!path && checkIfPathInMonacoTree(monacoTree, path.split('/'))),
-    switchMap(([path]) => from(this.webContainerService.readFile(`${this.project().cwd}/${path}`).catch(() => ''))),
+    filter(([[path], monacoTree]) => !!path && checkIfPathInMonacoTree(monacoTree, path.split('/'))),
+    switchMap(([[path]]) => from(this.webContainerService.readFile(`${this.project().cwd}/${path}`).catch(() => ''))),
     share()
   );
 
@@ -238,14 +249,22 @@ export class CodeEditorViewComponent implements OnDestroy {
           // Remove link between launch project and terminals
           await this.webContainerService.loadProject(project.files, project.commands, project.cwd);
         }
-        await this.loadNewProject();
-        this.cwd$.next(project?.cwd || '');
+        this.loadNewProject();
+        this.cwd$.next(project.cwd);
       });
     });
-    this.form.controls.code.valueChanges.pipe(
-      distinctUntilChanged(),
-      skip(1),
-      debounceTime(300),
+    this.forceReload.subscribe(async () => {
+      await this.cleanAllModelsFromMonaco();
+      await this.loadAllProjectFilesToMonaco();
+    });
+    merge(
+      this.forceSave.pipe(map(() => this.form.value.code)),
+      this.form.controls.code.valueChanges.pipe(
+        distinctUntilChanged(),
+        skip(1),
+        debounceTime(1000)
+      )
+    ).pipe(
       filter((text): text is string => !!text),
       takeUntilDestroyed()
     ).subscribe((text: string) => {
@@ -253,11 +272,20 @@ export class CodeEditorViewComponent implements OnDestroy {
         this.loggerService.error('No project found');
         return;
       }
+      if (text !== this.fileContent()) {
+        const { cwd } = this.project();
+        localStorage.setItem(cwd, JSON.stringify({
+          ...JSON.parse(localStorage.getItem(cwd) || '{}'),
+          [this.form.controls.file.value!]: text
+        }));
+      }
       const path = `${this.project().cwd}/${this.form.controls.file.value}`;
       this.loggerService.log('Writing file', path);
       void this.webContainerService.writeFile(path, text);
     });
-    this.fileContentLoaded$.subscribe((content) => this.form.controls.code.setValue(content));
+    this.fileContentLoaded$.subscribe((content) => {
+      this.form.controls.code.setValue(content);
+    });
 
     // Reload definition types when finishing install
     this.webContainerService.runner.dependenciesLoaded$.pipe(
@@ -309,10 +337,39 @@ export class CodeEditorViewComponent implements OnDestroy {
         }
       });
     });
+    void this.retrieveSaveChanges();
+  }
+
+  private async retrieveSaveChanges() {
+    await firstValueFrom(this.cwdTree$);
+    const { cwd } = this.project();
+    const savedState = localStorage.getItem(cwd);
+    if (savedState) {
+      const modal = this.modalService.open(
+        SaveCodeDialogComponent,
+        {
+          backdrop: 'static',
+          container: '.editor',
+          backdropClass: 'save-code-dialog-backdrop',
+          windowClass: 'save-code-dialog-window'
+        }
+      );
+      void modal.result.then(async (positiveReply) => {
+        if (positiveReply) {
+          const state = JSON.parse(savedState);
+          await Promise.all(
+            Object.entries<string>(state).map(([path, text]) => this.webContainerService.writeFile(`${cwd}/${path}`, text))
+          );
+          this.forceReload.next();
+        } else {
+          localStorage.removeItem(cwd);
+        }
+      });
+    }
   }
 
   /**
-   * Unload ahh the files from the global monaco editor
+   * Unload all the files from the global monaco editor
    */
   private async cleanAllModelsFromMonaco() {
     const monaco = await this.monacoPromise;
@@ -338,15 +395,9 @@ export class CodeEditorViewComponent implements OnDestroy {
   /**
    * Load a new project in global monaco editor and update local form accordingly
    */
-  private async loadNewProject() {
-    if (this.project()?.startingFile) {
-      this.form.controls.file.setValue(this.project().startingFile);
-    } else {
-      this.form.controls.file.setValue('');
-      this.form.controls.code.setValue('');
-    }
-    await this.cleanAllModelsFromMonaco();
-    await this.loadAllProjectFilesToMonaco();
+  private loadNewProject() {
+    this.form.controls.file.setValue(this.project().startingFile);
+    this.forceReload.next();
   }
 
   /**
@@ -367,6 +418,7 @@ export class CodeEditorViewComponent implements OnDestroy {
   public onEditorKeyDown(event: KeyboardEvent) {
     const ctrlKey = /mac/i.test(navigator.userAgent) ? event.metaKey : event.ctrlKey;
     if (ctrlKey && event.key.toLowerCase() === 's') {
+      this.forceSave.next();
       event.stopPropagation();
       event.preventDefault();
     }
@@ -386,6 +438,9 @@ export class CodeEditorViewComponent implements OnDestroy {
    * @inheritDoc
    */
   public ngOnDestroy() {
+    this.forceReload.complete();
+    this.forceSave.complete();
+    this.newMonacoEditorCreated.complete();
     this.webContainerService.runner.killContainer();
   }
 }
