@@ -1,0 +1,295 @@
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="16.834095">
+<testsuite name="visual-sanity.e2e.ts" timestamp="2025-02-27T09:53:26.671Z" hostname="Chromium" tests="1" failures="1" skipped="0" time="8.266" errors="0">
+<testcase name="Sanity test › Visual comparison for each page" classname="visual-sanity.e2e.ts" time="8.266">
+<failure message="visual-sanity.e2e.ts:16:7 Visual comparison for each page" type="FAILURE">
+<![CDATA[  [Chromium] › visual-sanity.e2e.ts:16:7 › Sanity test › Visual comparison for each page › home ────
+
+    Error: expect(page).toHaveScreenshot(expected)
+
+      Expected an image 1280px by 1572px, received 1280px by 1596px. 263112 pixels (ratio 0.13 of all image pixels) are different.
+
+    Expected: /home/runner/work/otter/otter/apps/showcase/e2e-playwright/sanity/screenshots/visual-sanity.e2e.ts/chromium/home.png
+    Received: /home/runner/work/otter/otter/apps/showcase/test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium/chromium/home-actual.png
+        Diff: /home/runner/work/otter/otter/apps/showcase/test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium/chromium/home-diff.png
+
+    Call log:
+      - expect.toHaveScreenshot(chromium/home.png) with timeout 5000ms
+        - verifying given screenshot expectation
+      - taking page screenshot
+        - disabled all CSS animations
+      - waiting for fonts to load...
+      - fonts loaded
+      - Expected an image 1280px by 1572px, received 1280px by 1596px. 263112 pixels (ratio 0.13 of all image pixels) are different.
+      - waiting 100ms before taking screenshot
+      - taking page screenshot
+        - disabled all CSS animations
+      - waiting for fonts to load...
+      - fonts loaded
+      - captured a stable screenshot
+      - Expected an image 1280px by 1572px, received 1280px by 1596px. 263112 pixels (ratio 0.13 of all image pixels) are different.
+
+
+      21 |     await test.step('home', async () => {
+      22 |       await page.waitForURL('**/home');
+    > 23 |       await expect(page).toHaveScreenshot([browserName, 'home.png'], { fullPage: true, mask: [page.locator('.visual-testing-ignore')] });
+         |                          ^
+      24 |     });
+      25 |
+      26 |     await test.step('run-app-locally', async () => {
+        at /home/runner/work/otter/otter/apps/showcase/e2e-playwright/sanity/visual-sanity.e2e.ts:23:26
+        at /home/runner/work/otter/otter/apps/showcase/e2e-playwright/sanity/visual-sanity.e2e.ts:21:5
+
+    attachment #1: chromium/home-expected.png (image/png) ──────────────────────────────────────────
+    e2e-playwright/sanity/screenshots/visual-sanity.e2e.ts/chromium/home.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: chromium/home-actual.png (image/png) ────────────────────────────────────────────
+    test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium/chromium/home-actual.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: chromium/home-diff.png (image/png) ──────────────────────────────────────────────
+    test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium/chromium/home-diff.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #4: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #5: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium/trace.zip
+    Usage:
+
+        yarn playwright show-trace test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: expect(page).toHaveScreenshot(expected)
+
+      Expected an image 1280px by 1572px, received 1280px by 1596px. 263112 pixels (ratio 0.13 of all image pixels) are different.
+
+    Expected: /home/runner/work/otter/otter/apps/showcase/e2e-playwright/sanity/screenshots/visual-sanity.e2e.ts/chromium/home.png
+    Received: /home/runner/work/otter/otter/apps/showcase/test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium-retry1/chromium/home-actual.png
+        Diff: /home/runner/work/otter/otter/apps/showcase/test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium-retry1/chromium/home-diff.png
+
+    Call log:
+      - expect.toHaveScreenshot(chromium/home.png) with timeout 5000ms
+        - verifying given screenshot expectation
+      - taking page screenshot
+        - disabled all CSS animations
+      - waiting for fonts to load...
+      - fonts loaded
+      - Expected an image 1280px by 1572px, received 1280px by 1596px. 263112 pixels (ratio 0.13 of all image pixels) are different.
+      - waiting 100ms before taking screenshot
+      - taking page screenshot
+        - disabled all CSS animations
+      - waiting for fonts to load...
+      - fonts loaded
+      - captured a stable screenshot
+      - Expected an image 1280px by 1572px, received 1280px by 1596px. 263112 pixels (ratio 0.13 of all image pixels) are different.
+
+
+      21 |     await test.step('home', async () => {
+      22 |       await page.waitForURL('**/home');
+    > 23 |       await expect(page).toHaveScreenshot([browserName, 'home.png'], { fullPage: true, mask: [page.locator('.visual-testing-ignore')] });
+         |                          ^
+      24 |     });
+      25 |
+      26 |     await test.step('run-app-locally', async () => {
+        at /home/runner/work/otter/otter/apps/showcase/e2e-playwright/sanity/visual-sanity.e2e.ts:23:26
+        at /home/runner/work/otter/otter/apps/showcase/e2e-playwright/sanity/visual-sanity.e2e.ts:21:5
+
+    attachment #1: chromium/home-expected.png (image/png) ──────────────────────────────────────────
+    e2e-playwright/sanity/screenshots/visual-sanity.e2e.ts/chromium/home.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: chromium/home-actual.png (image/png) ────────────────────────────────────────────
+    test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium-retry1/chromium/home-actual.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: chromium/home-diff.png (image/png) ──────────────────────────────────────────────
+    test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium-retry1/chromium/home-diff.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #4: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium-retry1/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #5: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium-retry1/trace.zip
+    Usage:
+
+        yarn playwright show-trace test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #2 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: expect(page).toHaveScreenshot(expected)
+
+      Expected an image 1280px by 1572px, received 1280px by 1596px. 263112 pixels (ratio 0.13 of all image pixels) are different.
+
+    Expected: /home/runner/work/otter/otter/apps/showcase/e2e-playwright/sanity/screenshots/visual-sanity.e2e.ts/chromium/home.png
+    Received: /home/runner/work/otter/otter/apps/showcase/test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium-retry2/chromium/home-actual.png
+        Diff: /home/runner/work/otter/otter/apps/showcase/test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium-retry2/chromium/home-diff.png
+
+    Call log:
+      - expect.toHaveScreenshot(chromium/home.png) with timeout 5000ms
+        - verifying given screenshot expectation
+      - taking page screenshot
+        - disabled all CSS animations
+      - waiting for fonts to load...
+      - fonts loaded
+      - Expected an image 1280px by 1572px, received 1280px by 1596px. 263112 pixels (ratio 0.13 of all image pixels) are different.
+      - waiting 100ms before taking screenshot
+      - taking page screenshot
+        - disabled all CSS animations
+      - waiting for fonts to load...
+      - fonts loaded
+      - captured a stable screenshot
+      - Expected an image 1280px by 1572px, received 1280px by 1596px. 263112 pixels (ratio 0.13 of all image pixels) are different.
+
+
+      21 |     await test.step('home', async () => {
+      22 |       await page.waitForURL('**/home');
+    > 23 |       await expect(page).toHaveScreenshot([browserName, 'home.png'], { fullPage: true, mask: [page.locator('.visual-testing-ignore')] });
+         |                          ^
+      24 |     });
+      25 |
+      26 |     await test.step('run-app-locally', async () => {
+        at /home/runner/work/otter/otter/apps/showcase/e2e-playwright/sanity/visual-sanity.e2e.ts:23:26
+        at /home/runner/work/otter/otter/apps/showcase/e2e-playwright/sanity/visual-sanity.e2e.ts:21:5
+
+    attachment #1: chromium/home-expected.png (image/png) ──────────────────────────────────────────
+    e2e-playwright/sanity/screenshots/visual-sanity.e2e.ts/chromium/home.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: chromium/home-actual.png (image/png) ────────────────────────────────────────────
+    test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium-retry2/chromium/home-actual.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: chromium/home-diff.png (image/png) ──────────────────────────────────────────────
+    test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium-retry2/chromium/home-diff.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #4: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium-retry2/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #5: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium-retry2/trace.zip
+    Usage:
+
+        yarn playwright show-trace test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium-retry2/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #3 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: expect(page).toHaveScreenshot(expected)
+
+      Expected an image 1280px by 1572px, received 1280px by 1596px. 263112 pixels (ratio 0.13 of all image pixels) are different.
+
+    Expected: /home/runner/work/otter/otter/apps/showcase/e2e-playwright/sanity/screenshots/visual-sanity.e2e.ts/chromium/home.png
+    Received: /home/runner/work/otter/otter/apps/showcase/test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium-retry3/chromium/home-actual.png
+        Diff: /home/runner/work/otter/otter/apps/showcase/test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium-retry3/chromium/home-diff.png
+
+    Call log:
+      - expect.toHaveScreenshot(chromium/home.png) with timeout 5000ms
+        - verifying given screenshot expectation
+      - taking page screenshot
+        - disabled all CSS animations
+      - waiting for fonts to load...
+      - fonts loaded
+      - Expected an image 1280px by 1572px, received 1280px by 1596px. 263112 pixels (ratio 0.13 of all image pixels) are different.
+      - waiting 100ms before taking screenshot
+      - taking page screenshot
+        - disabled all CSS animations
+      - waiting for fonts to load...
+      - fonts loaded
+      - captured a stable screenshot
+      - Expected an image 1280px by 1572px, received 1280px by 1596px. 263112 pixels (ratio 0.13 of all image pixels) are different.
+
+
+      21 |     await test.step('home', async () => {
+      22 |       await page.waitForURL('**/home');
+    > 23 |       await expect(page).toHaveScreenshot([browserName, 'home.png'], { fullPage: true, mask: [page.locator('.visual-testing-ignore')] });
+         |                          ^
+      24 |     });
+      25 |
+      26 |     await test.step('run-app-locally', async () => {
+        at /home/runner/work/otter/otter/apps/showcase/e2e-playwright/sanity/visual-sanity.e2e.ts:23:26
+        at /home/runner/work/otter/otter/apps/showcase/e2e-playwright/sanity/visual-sanity.e2e.ts:21:5
+
+    attachment #1: chromium/home-expected.png (image/png) ──────────────────────────────────────────
+    e2e-playwright/sanity/screenshots/visual-sanity.e2e.ts/chromium/home.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: chromium/home-actual.png (image/png) ────────────────────────────────────────────
+    test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium-retry3/chromium/home-actual.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: chromium/home-diff.png (image/png) ──────────────────────────────────────────────
+    test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium-retry3/chromium/home-diff.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #4: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium-retry3/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #5: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium-retry3/trace.zip
+    Usage:
+
+        yarn playwright show-trace test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium-retry3/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../../e2e-playwright/sanity/screenshots/visual-sanity.e2e.ts/chromium/home.png]]
+
+[[ATTACHMENT|../../test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium/chromium/home-actual.png]]
+
+[[ATTACHMENT|../../test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium/chromium/home-diff.png]]
+
+[[ATTACHMENT|../../test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium/test-failed-1.png]]
+
+[[ATTACHMENT|../../test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium/trace.zip]]
+
+[[ATTACHMENT|../../e2e-playwright/sanity/screenshots/visual-sanity.e2e.ts/chromium/home.png]]
+
+[[ATTACHMENT|../../test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium-retry1/chromium/home-actual.png]]
+
+[[ATTACHMENT|../../test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium-retry1/chromium/home-diff.png]]
+
+[[ATTACHMENT|../../test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium-retry1/test-failed-1.png]]
+
+[[ATTACHMENT|../../test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium-retry1/trace.zip]]
+
+[[ATTACHMENT|../../e2e-playwright/sanity/screenshots/visual-sanity.e2e.ts/chromium/home.png]]
+
+[[ATTACHMENT|../../test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium-retry2/chromium/home-actual.png]]
+
+[[ATTACHMENT|../../test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium-retry2/chromium/home-diff.png]]
+
+[[ATTACHMENT|../../test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium-retry2/test-failed-1.png]]
+
+[[ATTACHMENT|../../test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium-retry2/trace.zip]]
+
+[[ATTACHMENT|../../e2e-playwright/sanity/screenshots/visual-sanity.e2e.ts/chromium/home.png]]
+
+[[ATTACHMENT|../../test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium-retry3/chromium/home-actual.png]]
+
+[[ATTACHMENT|../../test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium-retry3/chromium/home-diff.png]]
+
+[[ATTACHMENT|../../test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium-retry3/test-failed-1.png]]
+
+[[ATTACHMENT|../../test-results/visual-sanity.e2e.ts-Sanit-9d46a-al-comparison-for-each-page-Chromium-retry3/trace.zip]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>
