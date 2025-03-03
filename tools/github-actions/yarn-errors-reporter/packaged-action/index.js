@@ -26229,6 +26229,14 @@ module.exports = require("node:fs");
 
 /***/ }),
 
+/***/ 8161:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("node:os");
+
+/***/ }),
+
 /***/ 6760:
 /***/ ((module) => {
 
@@ -28037,9 +28045,16 @@ var exports = __webpack_exports__;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const tslib_1 = __nccwpck_require__(3031);
 const fs = tslib_1.__importStar(__nccwpck_require__(3024));
+const os = tslib_1.__importStar(__nccwpck_require__(8161));
 const path = tslib_1.__importStar(__nccwpck_require__(6760));
 const core = tslib_1.__importStar(__nccwpck_require__(7539));
 const exec_1 = __nccwpck_require__(1527);
+function parseYarnInstallOutput(output, errorCodesToReport) {
+    return output.split(os.EOL)
+        .map((line) => line ? JSON.parse(line) : undefined)
+        .filter((line) => !!line && errorCodesToReport.includes(line.displayName))
+        .map((line) => `➤${line.displayName}: ${line.indent}${line.data}`);
+}
 async function run() {
     try {
         const cwd = process.env.GITHUB_WORKSPACE;
@@ -28056,20 +28071,25 @@ async function run() {
             core.warning('This action only manages yarn, it doesn\'t do anything with other package managers');
             return;
         }
-        if (onlyReportsIfAffected) {
-            const gitDiffOutput = await (0, exec_1.getExecOutput)('git', ['diff', 'HEAD~1', '--quiet', '--', yarnLockPath], execOptions);
-            const isYarnLockAffected = gitDiffOutput.exitCode !== 0;
-            if (!isYarnLockAffected) {
-                core.info('Skipping error check, `yarn.lock` was not affected by this pull-request');
-                return;
+        let previousErrors = [];
+        const { stdout: fetchDepth } = await (0, exec_1.getExecOutput)('git', ['rev-list', 'HEAD', '--count'], execOptions);
+        if (Number.parseInt(fetchDepth, 10) > 1) {
+            if (onlyReportsIfAffected) {
+                const gitDiffOutput = await (0, exec_1.getExecOutput)('git', ['diff', 'HEAD~1', '--quiet', '--', yarnLockPath], execOptions);
+                const isYarnLockAffected = gitDiffOutput.exitCode !== 0;
+                if (!isYarnLockAffected) {
+                    core.info('Skipping error check, `yarn.lock` was not affected by this pull-request');
+                    return;
+                }
             }
+            await (0, exec_1.exec)('git', ['revert', '--no-commit', '-m', '1', 'HEAD']);
+            const { stdout: previousInstallOutput } = await (0, exec_1.getExecOutput)('yarn', ['install', '--mode=skip-build', '--json'], execOptions);
+            previousErrors = parseYarnInstallOutput(previousInstallOutput, errorCodesToReport);
+            await (0, exec_1.exec)('git', ['reset', '--hard']);
         }
-        const { stdout, stderr } = await (0, exec_1.getExecOutput)('yarn', ['install', '--mode=skip-build'], execOptions);
-        const filterErrors = (line) => errorCodesToReport.some((errCode) => line.includes(errCode));
-        const errors = [
-            ...stdout.split('\n').filter((line) => filterErrors(line)),
-            ...stderr.split('\n').filter((line) => filterErrors(line))
-        ];
+        const { stdout } = await (0, exec_1.getExecOutput)('yarn', ['install', '--mode=skip-build', '--json'], execOptions);
+        const errors = parseYarnInstallOutput(stdout, errorCodesToReport)
+            .filter((error) => !previousErrors.includes(error));
         if (errors.length > 0) {
             core.warning(errors.join('\n'), { file: reportOnFile, title: 'Errors during yarn install' });
         }

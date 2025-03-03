@@ -110,7 +110,7 @@
     "@o3r/styling": "workspace:^",
     "@popperjs/core": "^2.11.5",
     "@types/color": "^4.0.0",
-    "ag-grid-angular": "~32.3.0",
+    "ag-grid-angular": "~31.0.0",
     "ag-grid-community": "~32.3.0",
     "bootstrap": "5.3.3",
     "rxjs": "^7.8.1",

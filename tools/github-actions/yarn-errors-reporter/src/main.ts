@@ -1,9 +1,20 @@
 import * as fs from 'node:fs';
+import * as os from 'node:os';
 import * as path from 'node:path';
 import * as core from '@actions/core';
 import {
+  exec,
   getExecOutput,
 } from '@actions/exec';
+
+type YarnInstallOutputLine = { displayName: string; indent: string; data: string };
+
+function parseYarnInstallOutput(output: string, errorCodesToReport: string[]) {
+  return output.split(os.EOL)
+    .map((line) => line ? JSON.parse(line) as YarnInstallOutputLine : undefined)
+    .filter((line): line is YarnInstallOutputLine => !!line && errorCodesToReport.includes(line.displayName))
+    .map((line) => `➤${line.displayName}: ${line.indent}${line.data}`);
+}
 
 async function run(): Promise<void> {
   try {
@@ -22,22 +33,28 @@ async function run(): Promise<void> {
       core.warning('This action only manages yarn, it doesn\'t do anything with other package managers');
       return;
     }
-    if (onlyReportsIfAffected) {
-      const gitDiffOutput = await getExecOutput('git', ['diff', 'HEAD~1', '--quiet', '--', yarnLockPath], execOptions);
-      const isYarnLockAffected = gitDiffOutput.exitCode !== 0;
-      if (!isYarnLockAffected) {
-        core.info('Skipping error check, `yarn.lock` was not affected by this pull-request');
-        return;
+
+    let previousErrors: string[] = [];
+    const { stdout: fetchDepth } = await getExecOutput('git', ['rev-list', 'HEAD', '--count'], execOptions);
+    if (Number.parseInt(fetchDepth, 10) > 1) {
+      if (onlyReportsIfAffected) {
+        const gitDiffOutput = await getExecOutput('git', ['diff', 'HEAD~1', '--quiet', '--', yarnLockPath], execOptions);
+        const isYarnLockAffected = gitDiffOutput.exitCode !== 0;
+        if (!isYarnLockAffected) {
+          core.info('Skipping error check, `yarn.lock` was not affected by this pull-request');
+          return;
+        }
       }
+
+      await exec('git', ['revert', '--no-commit', '-m', '1', 'HEAD']);
+      const { stdout: previousInstallOutput } = await getExecOutput('yarn', ['install', '--mode=skip-build', '--json'], execOptions);
+      previousErrors = parseYarnInstallOutput(previousInstallOutput, errorCodesToReport);
+      await exec('git', ['reset', '--hard']);
     }
 
-    const { stdout, stderr } = await getExecOutput('yarn', ['install', '--mode=skip-build'], execOptions);
-
-    const filterErrors = (line: string) => errorCodesToReport.some((errCode) => line.includes(errCode));
-    const errors = [
-      ...stdout.split('\n').filter((line) => filterErrors(line)),
-      ...stderr.split('\n').filter((line) => filterErrors(line))
-    ];
+    const { stdout } = await getExecOutput('yarn', ['install', '--mode=skip-build', '--json'], execOptions);
+    const errors = parseYarnInstallOutput(stdout, errorCodesToReport)
+      .filter((error) => !previousErrors.includes(error));
 
     if (errors.length > 0) {
       core.warning(errors.join('\n'), { file: reportOnFile, title: 'Errors during yarn install' });
