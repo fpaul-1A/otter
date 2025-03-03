@@ -1,0 +1,1 @@
+# Yarn errors reporter action

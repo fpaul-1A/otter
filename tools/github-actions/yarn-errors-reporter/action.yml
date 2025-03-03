@@ -1,0 +1,14 @@
+name: 'Yarn errors reporter'
+description: 'Report errors during yarn install'
+inputs:
+  reportOnFile:
+    description: 'On which file to add the annotation'
+    required: false
+    default: 'yarn.lock'
+  errorCodesToReport:
+    description: 'Which error codes should be reported (coma separated list)'
+    required: false
+    default: YN0002,YN0059,YN0060
+runs:
+  using: 'node20'
+  main: 'packaged-action/index.js'
