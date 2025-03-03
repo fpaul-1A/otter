@@ -36,6 +36,8 @@ jobs:
       - uses: ./tools/github-actions/setup
         env:
           YARN_ENABLE_HARDENED_MODE: 1
+      - name: Yarn errors reporter
+        uses: ./tools/github-actions/yarn-errors-reporter
 
   build:
     runs-on: ubuntu-latest
