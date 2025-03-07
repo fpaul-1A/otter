@@ -65,7 +65,7 @@ export async function prepareTestEnv(folderName: string, options?: PrepareTestEn
   const logger = options?.logger || console;
   const yarnVersionParam = options?.yarnVersion;
   const rootFolderPath = process.cwd();
-  const itTestsFolderPath = path.resolve(rootFolderPath, '..', 'it-tests');
+  const itTestsFolderPath = process.env.IT_TESTS_FOLDER || path.resolve(rootFolderPath, '..', 'it-tests');
   const workspacePath = path.resolve(itTestsFolderPath, folderName);
   const globalFolderPath = path.resolve(rootFolderPath, '.cache', 'test-app');
   const o3rVersion = '~999';
@@ -174,8 +174,12 @@ export async function prepareTestEnv(folderName: string, options?: PrepareTestEn
 
   prepareFinalApp(appDirectory);
 
-  // Setup git and initial commit to easily make checks on the diff inside the tests
-  setupGit(workspacePath);
+  try {
+    // Setup git and initial commit to easily make checks on the diff inside the tests
+    setupGit(workspacePath);
+  } catch (err) {
+    console.error('Unable to setup git', err);
+  }
   const untouchedProjectsPaths = [untouchedAppPath, untouchedLibPath];
 
   return {
