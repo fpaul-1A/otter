@@ -67,7 +67,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest, windows-2025]
         packageManager: [yarn, npm]
         testEnvironment: [o3r-project-with-app]
     runs-on: ${{ matrix.os }}
@@ -83,6 +83,14 @@ jobs:
         with:
           artifactName: ${{ inputs.ref && format('dist-{0}', inputs.ref) || 'dist' }}
       - uses: ./tools/github-actions/setup
+      - uses: samypr100/setup-dev-drive@v3
+        if: ${{ runner.os == 'Windows' }}
+        with:
+          drive-size: 6GB
+          drive-format: ReFS
+          drive-type: Fixed
+          trusted-dev-drive: true
+          workspace-copy: false
       - shell: bash
         run: |
           git config --global  user.name "GitHub Actions"
@@ -126,6 +134,8 @@ jobs:
       - name: Test
         id: it-tests
         run: yarn test-int
+        env:
+          IT_TESTS_FOLDER: ${{ format('{0}/it-tests', runner.os == 'Windows' && env.DEV_DRIVE || '..') }}
       - name: Zip generated app on failure
         if: failure() && steps.it-tests.conclusion == 'failure'
         run: |
@@ -134,7 +144,7 @@ jobs:
             cp -R ./.cache ./otter/.cache
             zip -r it-tests.zip ../it-tests ./otter/.cache -x "./otter/.cache/nx/*" -x "../it-tests/*/node_modules/*"
           elif [ "$RUNNER_OS" == "Windows" ]; then
-            tar -acf it-tests.zip -C ../ --exclude="it-tests/*/node_modules/*" it-tests
+            tar -acf it-tests.zip -C "$DEV_DRIVE/" --exclude="it-tests/*/node_modules/*" it-tests
           fi
         shell: bash
       - name: Publish generated tests environment on failure
