@@ -19,7 +19,8 @@ runs:
           .yarn/unplugged
           .pnp.cjs
           .pnp.loader.mjs
-        key: ${{ runner.os }}-deps-${{ hashFiles('yarn.lock') }}
+          node_modules
+        key: ${{ runner.os }}-deps-${{ hashFiles('yarn.lock', '.yarnrc.yml') }}
         restore-keys: |
           ${{ runner.os }}-deps
           ${{ runner.os }}
