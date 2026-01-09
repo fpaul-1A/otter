@@ -26,6 +26,7 @@
     "/^release\\/.*-next$/"
   ],
   "separateMinorPatch": false,
+  rangeStrategy: "replace",
   "minimumReleaseAge": "5 days",
   "internalChecksFilter": "strict",
   "packageRules": [
