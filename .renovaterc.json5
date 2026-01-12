@@ -22,7 +22,6 @@
     "dependencies"
   ],
   "baseBranches": [
-    "main",
     "/^release\\/.*-next$/"
   ],
   "separateMinorPatch": false,
