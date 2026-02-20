@@ -15,9 +15,9 @@
     "otter"
   ],
   "dependencies": {
-    "@actions/core": "^2.0.0",
-    "@actions/exec": "^2.0.0",
-    "@actions/github": "^6.0.0",
+    "@actions/core": "^3.0.0",
+    "@actions/exec": "^3.0.0",
+    "@actions/github": "^9.0.0",
     "semver": "^7.5.2"
   },
   "devDependencies": {
@@ -31,15 +31,15 @@
     "@typescript-eslint/parser": "~8.52.0",
     "@vercel/ncc": "~0.38.0",
     "angular-eslint": "~21.0.1",
-    "eslint": "~9.39.0",
+    "eslint": "~10.0.0",
     "eslint-plugin-import": "~2.32.0",
     "eslint-plugin-import-newlines": "~1.4.0",
     "eslint-plugin-jest": "~29.12.0",
-    "eslint-plugin-jsdoc": "~61.5.0",
+    "eslint-plugin-jsdoc": "~62.5.0",
     "eslint-plugin-prefer-arrow": "~1.2.3",
-    "eslint-plugin-unicorn": "~62.0.0",
+    "eslint-plugin-unicorn": "~63.0.0",
     "eslint-plugin-unused-imports": "~4.3.0",
-    "globals": "^16.0.0",
+    "globals": "^17.0.0",
     "jsonc-eslint-parser": "~2.4.0",
     "tslib": "^2.6.2",
     "typescript": "~5.9.2",
